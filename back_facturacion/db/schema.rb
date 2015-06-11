@@ -14,16 +14,15 @@
 ActiveRecord::Schema.define(version: 20150610170834) do
 
   create_table "associateds", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.string   "ci_rif",      limit: 255
-    t.string   "alias",       limit: 255
-    t.string   "correo",      limit: 255
-    t.string   "mail",        limit: 255
-    t.string   "phone",       limit: 255
-    t.string   "address",     limit: 255
-    t.integer  "kind",        limit: 4
-    t.integer  "frequency",   limit: 4
-    t.string   "description", limit: 255
+    t.string   "name",        limit: 30
+    t.string   "ci_rif",      limit: 12
+    t.string   "alias",       limit: 12
+    t.string   "email",       limit: 30
+    t.string   "phone",       limit: 12
+    t.string   "address",     limit: 150
+    t.integer  "kind",        limit: 1
+    t.integer  "frequency",   limit: 1
+    t.string   "description", limit: 150
     t.integer  "user_id",     limit: 4
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
@@ -32,45 +31,45 @@ ActiveRecord::Schema.define(version: 20150610170834) do
   add_index "associateds", ["user_id"], name: "index_associateds_on_user_id", using: :btree
 
   create_table "invoices", force: :cascade do |t|
-    t.integer  "kind_operation",    limit: 4
-    t.integer  "status_operartons", limit: 4
-    t.string   "kind_payment",      limit: 255
-    t.string   "description",       limit: 255
-    t.integer  "total",             limit: 4
+    t.integer  "kind_operation",   limit: 1
+    t.integer  "status_operation", limit: 1
+    t.string   "kind_payment",     limit: 30
+    t.string   "description",      limit: 150
+    t.decimal  "total",                        precision: 10, null: false
     t.date     "date"
-    t.string   "document",          limit: 255
-    t.string   "payment_proof",     limit: 255
-    t.integer  "associated_id",     limit: 4
-    t.integer  "user_id",           limit: 4
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.string   "document",         limit: 150
+    t.string   "payment_proof",    limit: 150
+    t.integer  "associated_id",    limit: 4
+    t.integer  "user_id",          limit: 4
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
   end
 
   add_index "invoices", ["associated_id"], name: "index_invoices_on_associated_id", using: :btree
   add_index "invoices", ["user_id"], name: "index_invoices_on_user_id", using: :btree
 
   create_table "products", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.string   "description", limit: 255
-    t.integer  "price",       limit: 4
+    t.string   "name",        limit: 30,                 null: false
+    t.string   "description", limit: 150
+    t.decimal  "price",                   precision: 10, null: false
     t.date     "date"
     t.integer  "user_id",     limit: 4
     t.integer  "invoice_id",  limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   add_index "products", ["invoice_id"], name: "index_products_on_invoice_id", using: :btree
   add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "first_name", limit: 255
-    t.string   "last_name",  limit: 255
-    t.string   "email",      limit: 255
-    t.string   "user_name",  limit: 255
-    t.string   "password",   limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "first_name", limit: 12
+    t.string   "last_name",  limit: 12
+    t.string   "email",      limit: 30, null: false
+    t.string   "username",   limit: 12, null: false
+    t.string   "password",   limit: 12, null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   add_foreign_key "associateds", "users"

@@ -1,16 +1,15 @@
 class CreateAssociateds < ActiveRecord::Migration
   def change
     create_table :associateds do |t|
-      t.string :name
-      t.string :ci_rif
-      t.string :alias
-      t.string :correo
-      t.string :mail
-      t.string :phone
-      t.string :address
-      t.integer :kind
-      t.integer :frequency
-      t.string :description
+      t.string :name, limit: 30
+      t.string :ci_rif, limit: 12
+      t.string :alias, limit: 12
+      t.string :email, limit: 30
+      t.string :phone, limit: 12
+      t.string :address, limit: 150
+      t.integer :kind, limit: 1
+      t.integer :frequency, limit: 1
+      t.string :description, limit: 150
       t.references :user, index: true, foreign_key: true
 
       t.timestamps null: false

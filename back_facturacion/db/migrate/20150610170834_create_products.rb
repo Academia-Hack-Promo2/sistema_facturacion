@@ -1,9 +1,9 @@
 class CreateProducts < ActiveRecord::Migration
   def change
     create_table :products do |t|
-      t.string :name
-      t.string :description
-      t.integer :price
+      t.string :name, null: false, limit: 30
+      t.string :description, limit: 150
+      t.decimal :price, null: false, limit: 8
       t.date :date
       t.references :user, index: true, foreign_key: true
       t.references :invoice, index: true, foreign_key: true
