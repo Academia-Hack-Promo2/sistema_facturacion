@@ -64,9 +64,6 @@ ActiveRecord::Schema.define(version: 20150610205822) do
   add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "first_name",             limit: 12
-    t.string   "last_name",              limit: 12
-    t.string   "username",               limit: 12,               null: false
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.string   "email",                  limit: 255, default: "", null: false
