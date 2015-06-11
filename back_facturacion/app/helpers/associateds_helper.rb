@@ -1,0 +1,2 @@
+module AssociatedsHelper
+end

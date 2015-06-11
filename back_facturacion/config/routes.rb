@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :associateds
+
+
   devise_for :users
   get 'users' => 'users#index'
 
