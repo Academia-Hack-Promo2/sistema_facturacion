@@ -5,6 +5,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string :description, limit: 150
       t.decimal :price, null: false, limit: 8
       t.date :date
+      t.integer :quantity
       t.references :user, index: true, foreign_key: true
       t.references :invoice, index: true, foreign_key: true
 

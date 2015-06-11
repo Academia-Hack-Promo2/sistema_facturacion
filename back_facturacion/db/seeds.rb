@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 users = User.create([
+
 	{first_name: "Pedro", last_name: "Gonzalez", username: "pepe", password: "1234567890", email: "pepe@correo.com", encrypted_password: "887776665", reset_password_token: "88990022", sign_in_count: 0, current_sign_in_ip: "asdfghjkkl", last_sign_in_ip: "lorem"},
 	{first_name: "Jose", last_name: "Rodriguez", username: "cheo", password: "1234567890", email: "cheo@correo.com", encrypted_password: "887776665", reset_password_token: "88990022", sign_in_count: 0, current_sign_in_ip: "asdfghjkkl", last_sign_in_ip: "lorem"}
 	])
