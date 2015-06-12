@@ -1,7 +1,18 @@
 Rails.application.routes.draw do
 
+    get 'invoices/active' => 'invoices#active'
+    get 'invoices/inactive' => 'invoices#inactive'
+    get 'invoices/sale' => 'invoices#sale'
+    get 'invoices/shopping' => 'invoices#shopping'
+  resources :invoices
+    
   resources :associateds
     get 'associateds/show/all' => 'associateds#all'
+    get 'customers' => 'associateds#customers'
+    get 'providers' => 'associateds#providers'
+    get 'all_customers' => 'associateds#all_customers'
+    get 'sponsors' => 'associateds#sponsors'
+    get 'all_sponsors' => 'associateds#all_sponsors'
     #muestra todos los asociados activos o inactivos
   devise_for :users
   get 'users' => 'users#index'

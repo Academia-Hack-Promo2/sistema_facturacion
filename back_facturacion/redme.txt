@@ -1,5 +1,9 @@
 					Readme del facturacion
 
+			Asociados:
 en la tabla associateds tenemos un campo :kind y puede ser 0(estudiante), 1(sponsor) y 2 (vendedor).
 tambien tenemos una :frequency y puede ser 0(unico) y 1 (frecuente).
 El status nos dice si 0(activo) y 1(pasivo).
+			Facturas:
+:kind_operation 0(venta) y 1(compra).
+:status_operation true(activa) y false(inactiva)
