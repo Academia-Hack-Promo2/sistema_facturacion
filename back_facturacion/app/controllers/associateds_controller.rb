@@ -14,7 +14,7 @@ class AssociatedsController < ApplicationController
   	if associated.valid?
   		associated.save
   		render json: associated, :except => [:created_at, :updated_at]
-  	#else render json: {"Mensaje":"El formato no es valido"}
+  	else render json: {"Mensaje":"El formato no es valido"}
   	end
   end
   
@@ -49,11 +49,56 @@ class AssociatedsController < ApplicationController
 
   def all
   	associateds = Associated.all
-		#if associateds
+		if associateds
 			render json: associateds, :except => [:created_at, :updated_at]
-		#else 
-		#	render json: {"Mensaje":"no hay asociados registrados"}
-		#end  	
+		else 
+			render json: {"Mensaje":"no hay asociados registrados"}
+		end  	
+  end
+
+  def customers
+    customers = Associated.where(kind: 0, status:0)
+    if customers
+      render json: customers, :except => [:created_at, :updated_at]
+    else
+      render json: {"Mensaje":"no hay clientes registrados"}
+    end
+  end
+
+  def all_customers 
+    customers = Associated.where(kind:0)
+    if customers
+      render json: customers, :except => [:created_at, :updated_at]
+    else
+      render json: {"Mensaje":"no hay clientes registrados"}
+    end
+  end
+
+  def sponsors
+    sponsors = Associated.where(kind:1, status:0)
+    if sponsors.length>=1
+      render json: sponsors, :except => [:created_at, :updated_at]
+    else
+      render json: {"Mensaje":"no hay sponsors registrados"}
+    end
+  end
+
+  def all_sponsors
+    sponsors = Associated.where(kind:1)
+    if sponsors
+      render json: sponsors, :except => [:created_at, :updated_at]
+    else
+      render json: {"Mensaje":"no hay sponsors registrados"}
+    end
+  end
+
+  def providers
+    providers = Associated.where(kind: 2)
+    if providers
+      render json: providers, :except => [:created_at, :updated_at]
+    else
+      render json: {"Mensaje":"no hay proveedores registrados"}
+    end
   end
 
   private
