@@ -16,13 +16,14 @@ ActiveRecord::Schema.define(version: 20150610205822) do
   create_table "associateds", force: :cascade do |t|
     t.string   "name",        limit: 30
     t.string   "ci_rif",      limit: 12
-    t.string   "alias",       limit: 12
+    t.string   "alias",       limit: 50
     t.string   "email",       limit: 30
-    t.string   "phone",       limit: 12
+    t.string   "phone",       limit: 36
     t.string   "address",     limit: 150
     t.integer  "kind",        limit: 1
     t.integer  "frequency",   limit: 1
     t.string   "description", limit: 150
+    t.integer  "status",      limit: 1
     t.integer  "user_id",     limit: 4
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false

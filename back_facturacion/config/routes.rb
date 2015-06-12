@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
   resources :associateds
-
-
+    get 'associateds/show/all' => 'associateds#all'
+    #muestra todos los asociados activos o inactivos
   devise_for :users
   get 'users' => 'users#index'
+
 
   
   
