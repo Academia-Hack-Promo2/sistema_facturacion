@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
-  
+    get 'invoices/active' => 'invoices#active'
+    get 'invoices/inactive' => 'invoices#inactive'
+    get 'invoices/sale' => 'invoices#sale'
+    get 'invoices/shopping' => 'invoices#shopping'
   resources :invoices
+    
   resources :associateds
     get 'associateds/show/all' => 'associateds#all'
     get 'customers' => 'associateds#customers'
