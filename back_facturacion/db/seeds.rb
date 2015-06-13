@@ -47,6 +47,6 @@ invoices = Invoice.create([
 	])
 
 products = Product.create([
-	{name: "Hack_Full", description: "Curso intensivo de 16 semanas de formación para  programadores", price: 36000.0, date: "2015-06-30", user_id: 1, invoice_id: 1},
-	{name: "Hack_Partial", description: "Curso intensivo de 16 semanas de formación para programadores", price: 10000.0, date: "2015-06-30", user_id: 2, invoice_id: 2}
+	{name: "Hack_Full", description: "Curso intensivo de 16 semanas de formación para  programadores", price: 36000.0, date: "2015-06-30", quantity: 1, user_id: 1, invoice_id: 1},
+	{name: "Hack_Partial", description: "Curso intensivo de 16 semanas de formación para programadores", price: 10000.0, date: "2015-06-30", quantity: 1, user_id: 2, invoice_id: 2}
 	])

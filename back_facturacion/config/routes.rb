@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  #Products
+  get 'products/index'
+  get 'products/show'
+  get 'products/create'
+  get 'products/update'
+  get 'products/destroy'
+  get 'products' => 'products#show_all'
+  get 'products/:id' => 'products#show_one'
+  post 'products' => 'products#create_one'
+  put 'products/:id' => 'products#update_one'
+  delete 'products/:id' => 'products#delete_one'
+
     get 'invoices/active' => 'invoices#active'
     get 'invoices/inactive' => 'invoices#inactive'
     get 'invoices/sale' => 'invoices#sale'

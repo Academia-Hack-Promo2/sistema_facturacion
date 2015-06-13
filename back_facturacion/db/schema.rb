@@ -50,15 +50,15 @@ ActiveRecord::Schema.define(version: 20150610205822) do
   add_index "invoices", ["user_id"], name: "index_invoices_on_user_id", using: :btree
 
   create_table "products", force: :cascade do |t|
-    t.string   "name",        limit: 30,                 null: false
+    t.string   "name",        limit: 30,                          null: false
     t.string   "description", limit: 150
-    t.decimal  "price",                   precision: 10, null: false
+    t.decimal  "price",                   precision: 8, scale: 2, null: false
     t.date     "date"
     t.integer  "quantity",    limit: 4
     t.integer  "user_id",     limit: 4
     t.integer  "invoice_id",  limit: 4
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
   end
 
   add_index "products", ["invoice_id"], name: "index_products_on_invoice_id", using: :btree
