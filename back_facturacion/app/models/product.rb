@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
   belongs_to :user
+  belongs_to :invoices_products
   has_and_belongs_to_many :invoice
   validates :name, :price, presence: true
   validates :name, length: { maximum: 30 }

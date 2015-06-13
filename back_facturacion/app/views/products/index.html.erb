@@ -62,35 +62,40 @@
           <%= yield %>    
           <div class="well sidebar-nav">
             <h2>Products</h2>
-            <table>
-              <thead>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Date</th>
-                <th>Quantity</th>
-                <th>Delete</th>
-                <th>Update</th>
-              </thead>
-              <tbody>
-                <% @products.each do |product| %>
-                <tr>
-                  <td><%= product.name %></td>
-                  <td><%= product.description %></td>
-                  <td><%= product.price %></td>
-                  <td><%= product.date %></td>
-                  <td><%= product.quantity %></td>
-                  <td><%= link_to  "Edit", edit_product_path(product), :class => 'btn btn-mini btn-primary' %></td>
-                  <td></td>
-                </tr>
-                <% end %>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover">
+                <thead>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Price</th>
+                  <th>Date</th>
+                  <th>Quantity</th>
+                  <th>Update</th>
+                  <th>Delete</th>
+                </thead>
+                <tbody>
+                  <% @products.each do |product| %>
+                  <tr>
+                    <td><%= product.name %></td>
+                    <td><%= product.description %></td>
+                    <td><%= product.price %></td>
+                    <td><%= product.date %></td>
+                    <td><%= product.quantity %></td>
+                    <td><%= link_to  "Edit", edit_product_path(product), :class => 'btn btn-mini btn-primary' %></td>
+                    <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger' %></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+            <%= link_to "New Product", new_product_path, :class => 'btn btn-mini btn-success' %>
           </div><!--/.well -->
-          </div>
+        </div>
       </div><!--/row-->
       <footer>
-        <p>&copy; Company 2015</p>
+        <p>&copy; Hack 2015</p>
       </footer>
 
     </div> <!-- /container -->

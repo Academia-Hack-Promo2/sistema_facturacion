@@ -6,7 +6,18 @@ class ProductsController < ApplicationController
   def show
   end
 
+  def new
+    @product = Product.new  
+  
+  end
+
   def create
+    @product = Product.new(permit)
+    if @product.save
+      redirect_to products_path
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -22,15 +33,13 @@ class ProductsController < ApplicationController
     end
   end
 
-  def destroy
-  end
-
-  def show_all
-    products = Product.all
-    if products
-      render json: products, :except => [:created_at, :updated_at]
-    end
-  end
+  def destroy    
+    if Product.find(params[:id]).destroy
+      redirect_to products_path, :notice => 'Product Successfully Deleted.'
+    else
+      render 'destroy'
+    end 
+  end  
 
   def show_one 
   exist = Product.exists?(params[:id])     
@@ -39,26 +48,7 @@ class ProductsController < ApplicationController
     else
       render json: {"Mensaje": "El Producto No Existe" }
     end
-  end
-
-  def create_one
-    product = Product.new(permit)
-    if product.valid?
-      product.save
-      render json: product, :except => [:created_at, :updated_at]
-    else
-      render json: product.errors.messages
-    end
-  end  
-
-  def delete_one
-    if Product.exists?(params[:id])
-      Product.delete(params[:id])
-      render json: {"Mensaje": "El Producto Fue Borrado"}
-    else
-      render json: {"Mensaje": "El Producto No Existe"}
-    end 
-  end
+  end    
 
   private
   def permit

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150610205822) do
+ActiveRecord::Schema.define(version: 20150613204437) do
 
   create_table "associateds", force: :cascade do |t|
     t.string   "name",        limit: 30
@@ -49,6 +49,14 @@ ActiveRecord::Schema.define(version: 20150610205822) do
   add_index "invoices", ["associated_id"], name: "index_invoices_on_associated_id", using: :btree
   add_index "invoices", ["user_id"], name: "index_invoices_on_user_id", using: :btree
 
+  create_table "invoices_products", force: :cascade do |t|
+    t.integer "invoice_id", limit: 4
+    t.integer "product_id", limit: 4
+  end
+
+  add_index "invoices_products", ["invoice_id"], name: "index_invoices_products_on_invoice_id", using: :btree
+  add_index "invoices_products", ["product_id"], name: "index_invoices_products_on_product_id", using: :btree
+
   create_table "products", force: :cascade do |t|
     t.string   "name",        limit: 30,                          null: false
     t.string   "description", limit: 150
@@ -85,6 +93,8 @@ ActiveRecord::Schema.define(version: 20150610205822) do
   add_foreign_key "associateds", "users"
   add_foreign_key "invoices", "associateds"
   add_foreign_key "invoices", "users"
+  add_foreign_key "invoices_products", "invoices"
+  add_foreign_key "invoices_products", "products"
   add_foreign_key "products", "invoices"
   add_foreign_key "products", "users"
 end
