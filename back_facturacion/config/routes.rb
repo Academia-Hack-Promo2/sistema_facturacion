@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   #Products
+  resources :products
   get 'products/index'
   get 'products/show'
   get 'products/create'

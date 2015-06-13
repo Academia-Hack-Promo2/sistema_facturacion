@@ -11,5 +11,7 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require twitter-bootstrap-static/bootstrap
+ *= require twitter-bootstrap-static/fontawesome
  *= require_self
  */

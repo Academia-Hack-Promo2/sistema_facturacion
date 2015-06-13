@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   def index
+    @products = Product.all 
   end
 
   def show
@@ -8,7 +9,7 @@ class ProductsController < ApplicationController
   def create
   end
 
-  def update
+  def update    
   end
 
   def destroy
@@ -38,16 +39,7 @@ class ProductsController < ApplicationController
     else
       render json: product.errors.messages
     end
-  end
-
-  def update_one
-    if Product.exists?(params[:id])
-      products = Product.update(params[:id], permit)
-      render json: products, :except => [:created_at, :updated_at]
-    else
-      render json: {"Mensaje": "El Producto No Fue Editado"}
-    end    
-  end
+  end  
 
   def delete_one
     if Product.exists?(params[:id])
