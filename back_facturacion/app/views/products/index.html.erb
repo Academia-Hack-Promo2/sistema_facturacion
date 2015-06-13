@@ -80,7 +80,7 @@
                   <td><%= product.price %></td>
                   <td><%= product.date %></td>
                   <td><%= product.quantity %></td>
-                  <td><%= link_to  "Edit", products_update_path(product), :class => 'btn btn-mini btn-primary' %></td>
+                  <td><%= link_to  "Edit", edit_product_path(product), :class => 'btn btn-mini btn-primary' %></td>
                   <td></td>
                 </tr>
                 <% end %>

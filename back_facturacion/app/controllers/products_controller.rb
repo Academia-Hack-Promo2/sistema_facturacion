@@ -9,7 +9,17 @@ class ProductsController < ApplicationController
   def create
   end
 
-  def update    
+  def edit
+    @product = Product.find(params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    if @product.update(permit)
+      redirect_to products_path, :notice => 'Product Successfully Updated.'
+    else
+      render 'edit'
+    end
   end
 
   def destroy
@@ -52,6 +62,6 @@ class ProductsController < ApplicationController
 
   private
   def permit
-    params.permit(:name, :description, :price, :date, :quantity, :user_id, :invoice_id)
+    params.require(:product).permit(:name, :description, :price, :date, :quantity, :user_id, :invoice_id)
   end
 end
