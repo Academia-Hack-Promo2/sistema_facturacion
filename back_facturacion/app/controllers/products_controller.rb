@@ -4,17 +4,19 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @product = []
+      product = Product.find(params[:id])
+      @product.push(product)
   end
 
   def new
-    @product = Product.new  
-  
+    @product = Product.new   
   end
 
   def create
     @product = Product.new(permit)
     if @product.save
-      redirect_to products_path
+      redirect_to products_path, :notice => 'Product Successfully Added.'
     else
       render 'new'
     end
@@ -39,15 +41,6 @@ class ProductsController < ApplicationController
     else
       render 'destroy'
     end 
-  end  
-
-  def show_one 
-  exist = Product.exists?(params[:id])     
-    if exist
-      render json: Product.find(params[:id]), :except => [:created_at, :updated_at]
-    else
-      render json: {"Mensaje": "El Producto No Existe" }
-    end
   end    
 
   private

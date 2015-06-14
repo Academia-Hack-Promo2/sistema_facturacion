@@ -70,6 +70,7 @@
                   <th>Price</th>
                   <th>Date</th>
                   <th>Quantity</th>
+                  <th>Details</th>
                   <th>Update</th>
                   <th>Delete</th>
                 </thead>
@@ -81,10 +82,9 @@
                     <td><%= product.price %></td>
                     <td><%= product.date %></td>
                     <td><%= product.quantity %></td>
+                    <td><%= link_to  "Details", product_path(product), :class => 'btn btn-mini btn-info' %></td>
                     <td><%= link_to  "Edit", edit_product_path(product), :class => 'btn btn-mini btn-primary' %></td>
                     <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger' %></td>
-                    <td></td>
-                    <td></td>
                   </tr>
                   <% end %>
                 </tbody>
