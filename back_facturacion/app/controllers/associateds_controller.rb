@@ -5,43 +5,41 @@ class AssociatedsController < ApplicationController
   	@associateds = Associated.where(:status => 0)
   end
 
+  def show
+    @associated = []
+      associated = Associated.find(params[:id])
+      @associated.push(associated)
+  end
+
   def create
-  	associated = Associated.new(permit)
-  	if associated.valid?
-  		associated.save
-  		render json: associated, :except => [:created_at, :updated_at]
-  	else render json: {"Mensaje":"El formato no es valido"}
-  	end
+    associated = Associated.new(permit)
+    if associated.valid?
+      associated.save
+      render json: associated, :except => [:created_at, :updated_at]
+    else render json: {"Mensaje":"El formato no es valido"}
+    end
   end
   
   def update
-  	if Associated.exists?(params[:id])
-  		associated = Associated.update(params[:id], permit)
-  		render json: associated, :except => [:created_at, :updated_at]
-  	else 
-  		render json: {"Mensaje":"El asociado no existe"}
-  	end
+    if Associated.exists?(params[:id])
+      associated = Associated.update(params[:id], permit)
+      render json: associated, :except => [:created_at, :updated_at]
+    else 
+      render json: {"Mensaje":"El asociado no existe"}
+    end
   end
 
   def destroy
-  	if Associated.exists?(params[:id])
-  		associated = Associated.find(params[:id])
-  		associated.status = 1
-  		associated.save
-  		render json: associated, :except => [:created_at, :updated_at]
-  	else 
-  		render json: {"Mensaje":"El asociado no existe"}
-  	end
+    if Associated.exists?(params[:id])
+      associated = Associated.find(params[:id])
+      associated.status = 1
+      associated.save
+      render json: associated, :except => [:created_at, :updated_at]
+    else 
+      render json: {"Mensaje":"El asociado no existe"}
+    end
   end
 
-  def show
-  	if Associated.exists?(params[:id])
-  		associated = Associated.find(params[:id])
-  		render json: associated, :except => [:created_at, :updated_at]
-  	else 
-  		render json: {"Mensaje":"El asociado no existe"}
-  	end
-  end
 
   def all
   	associateds = Associated.all
