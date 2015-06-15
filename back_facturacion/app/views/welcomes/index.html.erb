@@ -47,10 +47,13 @@
         </button>
         <a class="navbar-brand" href="#">HackFacturation</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
-          <ul class="nav navbar-nav">
-            <li><%= link_to "Products", "/products"  %></li>
-            <li><%= link_to "Associateds", "/associateds"  %></li>
-            <li><%= link_to "Invoices", "/invoices"  %></li>
+          <ul class="nav navbar-nav">     
+            <li><a><%= link_to  "Associateds",Associated %></a></li>
+            <li><a><%= link_to  "Invoices",Invoice %></a></li>
+            <li><a>Payment Record</a></li>
+            <li><a>Report</a></li>
+            <li><a>Search</a></li>
+            <li><a><%= link_to  "Products",Product %></a></li>
           </ul>
         </div>
       </div>

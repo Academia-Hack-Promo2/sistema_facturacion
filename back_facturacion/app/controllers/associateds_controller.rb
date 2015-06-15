@@ -1,12 +1,8 @@
 class AssociatedsController < ApplicationController
 	skip_before_filter  :verify_authenticity_token
+
   def index
-  	associateds = Associated.where(:status => 0)
-  	if associateds
-  		render json: associateds, :except => [:created_at, :updated_at]
-  	else
-  		render json: {"Mensaje":"no hay asociados registrados"}
-  	end
+  	@associateds = Associated.where(:status => 0)
   end
 
   def create
@@ -104,7 +100,7 @@ class AssociatedsController < ApplicationController
   private
 
   def permit
-  	params.permit(:name, :ci_rif, :alias, :email, :phone, :address, :kind, :frequency,
+  	params.require(:associated).permit(:name, :ci_rif, :alias, :email, :phone, :address, :kind, :frequency,
   								:description, :status, :user_id)
   end
 end
