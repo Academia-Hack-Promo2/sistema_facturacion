@@ -41,21 +41,21 @@
 
     <div id="wrapper" class="active">
       <div id="sidebar-wrapper">
-      <ul id="sidebar_menu" class="sidebar-nav">
-           <%= image_tag "full-logo-aeb6cec9ca9eee43393c56f9d220e49c.png", :alt => "logo", :title => "logo"%>
-      </ul>
-        <ul class="sidebar-nav" id="sidebar">     
-          <li><a><%= link_to  "associateds",Associated %></a></li>
-          <li><a><%= link_to  "invoices",Invoice %></a></li>
-          <li><a>Payment record</a></li>
-          <li><a>Report</a></li>
-          <li><a>Search</a></li>
-          <li><a><%= link_to  "products",Product %></a></li>
+        <ul id="sidebar_menu" class="sidebar-nav">
+             <%= image_tag "full-logo-aeb6cec9ca9eee43393c56f9d220e49c.png", :alt => "logo", :title => "logo"%>
         </ul>
+          <ul class="sidebar-nav" id="sidebar">     
+            <li><a><%= link_to  "associateds",Associated %></a></li>
+            <li><a><%= link_to  "invoices",Invoice %></a></li>
+            <li><a>Payment record</a></li>
+            <li><a>Report</a></li>
+            <li><a>Search</a></li>
+            <li><a><%= link_to  "products",Product %></a></li>
+          </ul>
 
-        <footer>
-          <p>&copy; Hack 2015</p>
-        </footer>
+          <footer>
+            <p>&copy; Hack 2015</p>
+          </footer>
       </div>
           
       <!-- Page content -->
@@ -95,6 +95,7 @@
                       </tbody>
                     </table>
                   </div>
+
                   <%= link_to "New Product", new_product_path, :class => 'btn btn-mini btn-success' %>
                 </div> 
             </div>
@@ -102,7 +103,7 @@
         </div>
       </div>
       
-    </div>
+  </div>
 
   </body>
 </html>
