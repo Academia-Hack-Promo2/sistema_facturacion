@@ -29,47 +29,52 @@
     <%= javascript_include_tag "application" %>
   </head>
   <body>
-    <div class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">HackFacturation</a>
-        <div class="navbar-collapse collapse navbar-responsive-collapse">
-          <ul class="nav navbar-nav">
-            <li><%= link_to "Products", "/products"  %></li>
-            <li><%= link_to "Associateds", "/associateds"  %></li>
-            <li><%= link_to "Invoices", "/invoices"  %></li>
-          </ul>
+    <div id="wrapper" class="active">
+      <div id="sidebar-wrapper">
+      <ul id="sidebar_menu" class="sidebar-nav">
+           <%= image_tag "full-logo-aeb6cec9ca9eee43393c56f9d220e49c.png", :alt => "logo", :title => "logo"%>
+      </ul>
+        <ul class="sidebar-nav" id="sidebar">     
+          <li><a><%= link_to  "associateds",Associated %></a></li>
+          <li><a><%= link_to  "invoices",Invoice %></a></li>
+          <li><a>Payment record</a></li>
+          <li><a>Report</a></li>
+          <li><a>Search</a></li>
+          <li><a><%= link_to  "products",Product %></a></li>
+        </ul>
+
+        <footer>
+          <p>&copy; Hack 2015</p>
+        </footer>
+      </div>
+       <div id="page-content-wrapper">
+        <div class="page-content inset">
+          <div class="row">
+              <div class="col-md-12">
+                <%= bootstrap_flash %>
+                <%= yield %>    
+                <div class="content">
+                  <h2>Product</h2>
+                  <h3><%= @product.name %></h3>
+                  <%= semantic_form_for @product do |f| %>
+                  <%= f.input :name %>
+                  <%= f.input :description %>
+                  <%= f.input :price %>
+                  <%= f.input :date %>
+                  <%= f.input :quantity %>
+                  <%= f.input :user_id %>
+                  <%= f.input :invoice_id %>
+                  <%= f.submit :class => "btn btn-primary" %> 
+                  <% end %>          
+                </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <%= bootstrap_flash %>
-          <%= yield %>
-          <div class="well sidebar-nav">
-            <h2>Product</h2>
-            <h3><%= @product.name %></h3>
-            <%= semantic_form_for @product do |f| %>
-            <%= f.input :name %>
-            <%= f.input :description %>
-            <%= f.input :price %>
-            <%= f.input :date %>
-            <%= f.input :quantity %>
-            <%= f.input :user_id %>
-            <%= f.input :invoice_id %>
-            <%= f.submit %> 
-            <% end %>
-          </div><!--/.well -->
-        </div>
-      </div><!--/row-->
-      <footer>
-        <p>&copy; Hack 2015</p>
-      </footer>
-    </div> <!-- /container -->
+
+      
+
+
+
   </body>
 </html>
