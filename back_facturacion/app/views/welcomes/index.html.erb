@@ -45,7 +45,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">HackFacturation</a>
+        <a class="navbar-brand" href="#">HackFacturation</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
             <li><%= link_to "Products", "/products"  %></li>
@@ -61,36 +61,7 @@
           <%= bootstrap_flash %>
           <%= yield %>    
           <div class="well sidebar-nav">
-            <h2>Products</h2>
-            <div class="table-responsive">
-              <table class="table table-bordered table-hover">
-                <thead>
-                  <th>Name</th>
-                  <th>Description</th>
-                  <th>Price</th>
-                  <th>Date</th>
-                  <th>Quantity</th>
-                  <th>Details</th>
-                  <th>Update</th>
-                  <th>Delete</th>
-                </thead>
-                <tbody>
-                  <% @products.each do |product| %>
-                  <tr>
-                    <td><%= product.name %></td>
-                    <td><%= product.description %></td>
-                    <td><%= product.price %></td>
-                    <td><%= product.date %></td>
-                    <td><%= product.quantity %></td>
-                    <td><%= link_to  "Details", product_path(product), :class => 'btn btn-mini btn-info' %></td>
-                    <td><%= link_to  "Edit", edit_product_path(product), :class => 'btn btn-mini btn-primary' %></td>
-                    <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger' %></td>
-                  </tr>
-                  <% end %>
-                </tbody>
-              </table>
-            </div>
-            <%= link_to "New Product", new_product_path, :class => 'btn btn-mini btn-success' %>
+            <h2>Hack Facturation</h2>
           </div><!--/.well -->
         </div>
       </div><!--/row-->

@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-
+  root 'welcomes#index'
   #Products
   resources :products
-  get 'products/index'
+
+  devise_for :users
+  get 'users' => 'users#index'
 
     get 'invoices/active' => 'invoices#active'
     get 'invoices/inactive' => 'invoices#inactive'
@@ -18,8 +20,6 @@ Rails.application.routes.draw do
     get 'sponsors' => 'associateds#sponsors'
     get 'all_sponsors' => 'associateds#all_sponsors'
     #muestra todos los asociados activos o inactivos
-  devise_for :users
-  get 'users' => 'users#index'
 
 
   
