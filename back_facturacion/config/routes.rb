@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
   root 'welcomes#index'
-  #Products
+  
   resources :products
 
   devise_for :users
-  get 'users' => 'users#index'
 
+  resources :invoices
     get 'invoices/active' => 'invoices#active'
     get 'invoices/inactive' => 'invoices#inactive'
     get 'invoices/sale' => 'invoices#sale'
     get 'invoices/shopping' => 'invoices#shopping'
-  resources :invoices
+    
     
   resources :associateds    
     get 'customers' => 'associateds#customers'
