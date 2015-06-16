@@ -20,13 +20,13 @@ ActiveRecord::Schema.define(version: 20150613204437) do
     t.string   "email",       limit: 30
     t.string   "phone",       limit: 36
     t.string   "address",     limit: 150
-    t.integer  "kind",        limit: 1
-    t.integer  "frequency",   limit: 1
+    t.integer  "kind",        limit: 4,   default: 0
+    t.integer  "frequency",   limit: 4,   default: 0
+    t.integer  "status",      limit: 4,   default: 0
     t.string   "description", limit: 150
-    t.integer  "status",      limit: 1
     t.integer  "user_id",     limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "associateds", ["user_id"], name: "index_associateds_on_user_id", using: :btree

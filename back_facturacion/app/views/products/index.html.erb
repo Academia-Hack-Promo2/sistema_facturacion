@@ -37,8 +37,6 @@
     <%= javascript_include_tag "application" %>
   </head>
   <body>
-
-
     <div id="wrapper" class="active">
       <div id="sidebar-wrapper">
         <ul id="sidebar_menu" class="sidebar-nav">
@@ -52,12 +50,11 @@
             <li><a>Report</a></li>
             <li><a>Search</a></li>
           </ul>
-
+          <br><br>
           <footer>
             <p>&copy; Hack 2015</p>
           </footer>
-      </div>
-          
+      </div>          
       <!-- Page content -->
       <div id="page-content-wrapper">
         <div class="page-content inset">
@@ -67,9 +64,12 @@
                 <%= yield %>    
                 <div class="content">
                   <h2>Products</h2>
+                  <%= link_to "New Product", new_product_path, :class => 'btn btn-success' %>
+                  <br><br>
                   <div class="table-responsive">
                     <table class="table table-bordered table-hover">
                       <thead>
+                        <th>N°</th>
                         <th>Name</th>
                         <th>Description</th>
                         <th>Price</th>
@@ -80,30 +80,27 @@
                         <th>Delete</th>
                       </thead>
                       <tbody>
-                        <% @products.each do |product| %>
+                        <% @products.each_with_index do |product, index| %>
                         <tr>
+                          <td><%= index + 1 %></td>
                           <td><%= product.name %></td>
                           <td><%= product.description %></td>
                           <td><%= product.price %></td>
                           <td><%= product.date %></td>
                           <td><%= product.quantity %></td>
-                          <td><%= link_to  "Details", product_path(product), :class => 'btn btn-mini btn-info' %></td>
-                          <td><%= link_to  "Edit", edit_product_path(product), :class => 'btn btn-mini btn-primary' %></td>
-                          <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger' %></td>
+                          <td><%= link_to  "Details", product_path(product), :class => 'btn btn-info' %></td>
+                          <td><%= link_to  "Edit", edit_product_path(product), :class => 'btn btn-primary' %></td>
+                          <td><%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %></td>
                         </tr>
                         <% end %>
                       </tbody>
                     </table>
-                  </div>
-
-                  <%= link_to "New Product", new_product_path, :class => 'btn btn-mini btn-success' %>
+                  </div>                  
                 </div> 
             </div>
           </div>
         </div>
-      </div>
-      
+      </div>      
   </div>
-
   </body>
 </html>

@@ -42,7 +42,7 @@
           <li><a>Report</a></li>
           <li><a>Search</a></li>
         </ul>
-
+        <br><br>
         <footer>
           <p>&copy; Hack 2015</p>
         </footer>
@@ -55,7 +55,7 @@
                 <%= yield %>    
                 <div class="content">
                   <h2>Product</h2>
-                  <h3><%= @product.name %></h3>
+                  <h3><strong>Edit: </strong><%= @product.name %></h3>
                   <%= semantic_form_for @product do |f| %>
                   <%= f.input :name %>
                   <%= f.input :description %>
@@ -65,16 +65,12 @@
                   <%= f.input :user_id %>
                   <%= f.input :invoice_id %>
                   <%= f.submit :class => "btn btn-primary" %> 
+                  <%= link_to "Cancel", "/products", :class => 'btn btn-success' %>
                   <% end %>          
                 </div>
             </div>
           </div>
         </div>
       </div>
-
-      
-
-
-
   </body>
 </html>

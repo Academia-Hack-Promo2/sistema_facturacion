@@ -12,13 +12,10 @@ Rails.application.routes.draw do
     get 'invoices/shopping' => 'invoices#shopping'
   resources :invoices
     
-  resources :associateds
-    get 'associateds/show/all' => 'associateds#all'
+  resources :associateds    
     get 'customers' => 'associateds#customers'
     get 'providers' => 'associateds#providers'
-    get 'all_customers' => 'associateds#all_customers'
     get 'sponsors' => 'associateds#sponsors'
-    get 'all_sponsors' => 'associateds#all_sponsors'
     #muestra todos los asociados activos o inactivos
 
 
