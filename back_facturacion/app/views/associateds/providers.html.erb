@@ -64,7 +64,7 @@
                 <%= bootstrap_flash %>
                 <%= yield %>    
                 <div class="content">
-                  <h2>Associateds</h2>   
+                  <h2>Providers</h2>   
                       <ul class="nav nav-tabs">
                         <li role="presentation" ><%= link_to "All Associateds", Associated %></li>
                         <li role="presentation" ><%= link_to "Show Customers", customers_path %></li>
@@ -88,19 +88,19 @@
                         <th>Delete</th>
                       </thead>
                       <tbody>
-                           <% @providers.each_with_index do |associated, index| %>
-                            <tr>
-                              <td><%= index + 1 %></td>
-                              <td><%= associated.name %></td>
-                              <td><%= associated.ci_rif %></td>
-                              <td><%= associated.alias %></td>
-                              <td><%= associated.email %></td>
-                              <td><%= associated.phone %></td>
-                              <td><%= associated.description %></td>
-                              <td><%= link_to  "Details", associated_path(associated), :class => 'btn btn-mini btn-info' %></td>
-                              <td><%= link_to  "Edit", edit_associated_path(associated), :class => 'btn btn-mini btn-primary' %></td>
-                              <td><%= link_to 'Destroy', associated, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger' %></td>
-                            </tr>
+                        <% @providers.each_with_index do |associated, index| %>
+                        <tr>
+                          <td><%= index + 1 %></td>
+                          <td><%= associated.name %></td>
+                          <td><%= associated.ci_rif %></td>
+                          <td><%= associated.alias %></td>
+                          <td><%= associated.email %></td>
+                          <td><%= associated.phone %></td>
+                          <td><%= associated.description %></td>
+                          <td><%= link_to  "Details", associated_path(associated), :class => 'btn btn-mini btn-info' %></td>
+                          <td><%= link_to  "Edit", edit_associated_path(associated), :class => 'btn btn-mini btn-primary' %></td>
+                          <td><%= link_to 'Destroy', associated, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger' %></td>
+                        </tr>
                         <% end %>
                       </tbody>
                     </table>
