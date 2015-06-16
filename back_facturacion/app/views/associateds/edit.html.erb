@@ -29,7 +29,6 @@
     <%= javascript_include_tag "application" %>
   </head>
   <body>
-
     <div id="wrapper" class="active">
       <div id="sidebar-wrapper">
       <ul id="sidebar_menu" class="sidebar-nav">
@@ -48,30 +47,40 @@
           <p>&copy; Hack 2015</p>
         </footer>
       </div>
-          <!-- Page content -->
-      <div id="page-content-wrapper">
+       <div id="page-content-wrapper">
         <div class="page-content inset">
           <div class="row">
               <div class="col-md-12">
                 <%= bootstrap_flash %>
                 <%= yield %>    
                 <div class="content">
-                  <h2>Product New</h2>
-                  <%= semantic_form_for @product do |f| %>
+                  <h2>Associated</h2>
+                  <%= link_to "New Associated", new_associated_path, :class => 'btn btn-mini btn-success' %>
+                  <%= link_to "All Associateds", Associated, :class => 'btn btn-mini btn-info' %>
+                  <%= link_to "Show Customers", new_associated_path, :class => 'btn btn-mini btn-info' %>
+                  <%= link_to "Show Sponsors", new_associated_path, :class => 'btn btn-mini btn-info' %>
+                  <%= link_to "Show Providers", new_associated_path, :class => 'btn btn-mini btn-info' %>
+                  <br><br>
+                  <h3><strong>Edit: </strong><%= @associated.name %></h3>
+                  <%= semantic_form_for @associated do |f| %>
                   <%= f.input :name %>
+                  <%= f.input :ci_rif %>
+                  <%= f.input :alias %>
+                  <%= f.input :email %>
+                  <%= f.input :phone %>
+                  <%= f.input :address %>
+                  <%= f.input :kind %>
+                  <%= f.input :frequency %>
                   <%= f.input :description %>
-                  <%= f.input :price %>
-                  <%= f.input :date %>
-                  <%= f.input :quantity %>
+                  <%= f.input :status %>
                   <%= f.input :user_id %>
-                  <%= f.input :invoice_id %>
                   <%= f.submit :class => "btn btn-primary" %> 
-                  <%= link_to "Cancel", "/products", :class => 'btn btn-success' %> <% end %>         
+                  <%= link_to "Cancel", "/associateds", :class => 'btn btn-success' %> 
+                  <% end %>          
                 </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
   </body>
 </html>

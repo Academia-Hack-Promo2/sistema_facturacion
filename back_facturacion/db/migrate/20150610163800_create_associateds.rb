@@ -7,10 +7,10 @@ class CreateAssociateds < ActiveRecord::Migration
       t.string :email, limit: 30
       t.string :phone, limit: 36
       t.string :address, limit: 150
-      t.integer :kind, limit: 1
-      t.integer :frequency, limit: 1
+      t.integer :kind, default: 0
+      t.integer :frequency, default: 0
+      t.integer :status, default: 0
       t.string :description, limit: 150
-      t.integer :status, limit: 1
       t.references :user, index: true, foreign_key: true
 
       t.timestamps null: false
