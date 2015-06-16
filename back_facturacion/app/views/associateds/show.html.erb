@@ -65,7 +65,8 @@
                 <%= bootstrap_flash %>
                 <%= yield %>    
                 <div class="content">
-                  <h2>Associated</h2>
+                <% @associated.each do |associated| %>
+                  <h2>Associated: <strong><%= associated.name %></strong></h2>
                   <%= link_to "New Associated", new_associated_path, :class => 'btn btn-mini btn-success' %>
                   <%= link_to "All Associateds", Associated, :class => 'btn btn-mini btn-info' %>
                   <%= link_to "Show Customers", new_associated_path, :class => 'btn btn-mini btn-info' %>
@@ -88,7 +89,7 @@
                         <th>User</th>
                       </thead>
                       <tbody>
-                        <% @associated.each do |associated| %>
+                        
                         <tr>
                           <td><%= associated.name %></td>
                           <td><%= associated.ci_rif %></td>
@@ -102,11 +103,12 @@
                           <td><%= associated.status %></td> 
                           <td><%= associated.user_id %></td> 
                         </tr>
-                        <% end %>
                       </tbody>
                     </table>
-                  </div>  
-                  <%= link_to "Return", "/associateds", :class => 'btn btn-mini btn-success' %>          
+                  </div> 
+                   <%= link_to "Return", "/associateds", :class => 'btn btn-mini btn-success' %> 
+                   <%= link_to  "Edit", edit_associated_path(associated), :class => 'btn btn-mini btn-primary' %>                  
+                        <% end %>                          
                 </div>
             </div>
           </div>
