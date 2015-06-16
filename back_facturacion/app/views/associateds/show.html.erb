@@ -65,16 +65,9 @@
                 <%= bootstrap_flash %>
                 <%= yield %>    
                 <div class="content">
-                <% @associated.each do |associated| %>
-                  <h2>Associated: <strong><%= associated.name %></strong></h2>
-                  <%= link_to "New Associated", new_associated_path, :class => 'btn btn-mini btn-success' %>
-                  <%= link_to "All Associateds", Associated, :class => 'btn btn-mini btn-info' %>
-                  <%= link_to "Show Customers", new_associated_path, :class => 'btn btn-mini btn-info' %>
-                  <%= link_to "Show Sponsors", new_associated_path, :class => 'btn btn-mini btn-info' %>
-                  <%= link_to "Show Providers", new_associated_path, :class => 'btn btn-mini btn-info' %>
-                  <br><br>
+                  <h2>Associated</h2>
                   <div class="table-responsive">
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-hover">
                       <thead>
                         <th>Name</th>
                         <th>CI-RIF</th>

@@ -55,13 +55,7 @@
                 <%= yield %>    
                 <div class="content">
                   <h2>Associated</h2>
-                  <%= link_to "New Associated", new_associated_path, :class => 'btn btn-mini btn-success' %>
-                  <%= link_to "All Associateds", Associated, :class => 'btn btn-mini btn-info' %>
-                  <%= link_to "Show Customers", new_associated_path, :class => 'btn btn-mini btn-info' %>
-                  <%= link_to "Show Sponsors", new_associated_path, :class => 'btn btn-mini btn-info' %>
-                  <%= link_to "Show Providers", new_associated_path, :class => 'btn btn-mini btn-info' %>
-                  <br><br>
-                  <h3>Edit: <strong><%= @associated.name %></strong></h3>
+                  <h3><strong>Edit: </strong><%= @associated.name %></h3>
                   <%= semantic_form_for @associated do |f| %>
                   <%= f.input :name %>
                   <%= f.input :ci_rif %>
