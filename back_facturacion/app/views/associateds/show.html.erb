@@ -65,7 +65,8 @@
                 <%= bootstrap_flash %>
                 <%= yield %>    
                 <div class="content">
-                  <h2>Associated</h2>
+                <% @associated.each do |associated| %>
+                  <h2><%= associated.kind %> : <strong><%= associated.name %></strong></h2>
                   <div class="table-responsive">
                     <table class="table table-hover">
                       <thead>
@@ -82,7 +83,6 @@
                         <th>User</th>
                       </thead>
                       <tbody>
-                        
                         <tr>
                           <td><%= associated.name %></td>
                           <td><%= associated.ci_rif %></td>
