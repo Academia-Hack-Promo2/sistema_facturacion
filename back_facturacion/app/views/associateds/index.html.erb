@@ -66,55 +66,53 @@
                 <%= bootstrap_flash %>
                 <%= yield %>    
                 <div class="content">
-                  <h2>Products</h2>
-                  <div class="row">
-                    <div class="col-lg-3">
-                     <%= link_to "New Product", new_product_path, :class => 'btn btn-mini btn-success' %>                  
-                    </div>
-                    <div class="col-lg-9">
-                      <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search Product">
-                        <span class="input-group-btn">
-                          <button class="btn btn-default" type="button">Go!</button>
-                        </span>
-                      </div>                  
-                    </div>
-                   <hr>                    
-                  </div>
+                  <h2>Associateds</h2>
                   <div class="table-responsive">
                     <table class="table table-bordered table-hover">
                       <thead>
                         <th>Name</th>
+                        <th>CI-RIF</th>
+                        <th>Alias</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Kind</th>
+                        <th>Frequency</th>
                         <th>Description</th>
-                        <th>Price</th>
-                        <th>Date</th>
-                        <th>Quantity</th>
+                        <th>Status</th>
                         <th>Details</th>
                         <th>Update</th>
                         <th>Delete</th>
                       </thead>
                       <tbody>
-                        <% @products.each do |product| %>
+                        <% @associateds.each do |associated| %>
                         <tr>
-                          <td><%= product.name %></td>
-                          <td><%= product.description %></td>
-                          <td><%= product.price %></td>
-                          <td><%= product.date %></td>
-                          <td><%= product.quantity %></td>
-                          <td><%= link_to  "Details", product_path(product), :class => 'btn btn-mini btn-info' %></td>
-                          <td><%= link_to  "Edit", edit_product_path(product), :class => 'btn btn-mini btn-primary' %></td>
-                          <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger' %></td>
+                          <td><%= associated.name %></td>
+                          <td><%= associated.ci_rif %></td>
+                          <td><%= associated.alias %></td>
+                          <td><%= associated.email %></td>
+                          <td><%= associated.phone %></td>
+                          <td><%= associated.address %></td>
+                          <td><%= associated.kind %></td>
+                          <td><%= associated.frequency %></td>
+                          <td><%= associated.description %></td>
+                          <td><%= associated.status %></td>
+                          <td><%= link_to  "Details", associated_path(associated), :class => 'btn btn-mini btn-info' %></td>
+                          <td><%= link_to  "Edit", edit_associated_path(associated), :class => 'btn btn-mini btn-primary' %></td>
+                          <td><%= link_to 'Destroy', associated, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger' %></td>
                         </tr>
                         <% end %>
                       </tbody>
                     </table>
                   </div>
 
+                  <%= link_to "New Product", new_associated_path, :class => 'btn btn-mini btn-success' %>
                 </div> 
             </div>
           </div>
         </div>
-      </div> 
+      </div>
+      
   </div>
 
   </body>
