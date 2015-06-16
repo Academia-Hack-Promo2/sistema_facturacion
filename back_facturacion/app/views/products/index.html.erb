@@ -67,6 +67,20 @@
                 <%= yield %>    
                 <div class="content">
                   <h2>Products</h2>
+                  <div class="row">
+                    <div class="col-lg-3">
+                     <%= link_to "New Product", new_product_path, :class => 'btn btn-mini btn-success' %>                  
+                    </div>
+                    <div class="col-lg-9">
+                      <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search Product">
+                        <span class="input-group-btn">
+                          <button class="btn btn-default" type="button">Go!</button>
+                        </span>
+                      </div>                  
+                    </div>
+                   <hr>                    
+                  </div>
                   <div class="table-responsive">
                     <table class="table table-bordered table-hover">
                       <thead>
@@ -96,13 +110,11 @@
                     </table>
                   </div>
 
-                  <%= link_to "New Product", new_product_path, :class => 'btn btn-mini btn-success' %>
                 </div> 
             </div>
           </div>
         </div>
-      </div>
-      
+      </div> 
   </div>
 
   </body>
