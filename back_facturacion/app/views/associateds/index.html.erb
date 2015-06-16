@@ -66,14 +66,17 @@
                 <%= bootstrap_flash %>
                 <%= yield %>    
                 <div class="content">
-                  <h2>Associateds</h2>                 
-                  <%= link_to "New Associated", new_associated_path, :class => 'btn btn-mini btn-success' %>
-                  <%= link_to "Show Customers", customers_path, :class => 'btn btn-mini btn-info' %>
-                  <%= link_to "Show Sponsors", sponsors_path, :class => 'btn btn-mini btn-info' %>
-                  <%= link_to "Show Providers", providers_path, :class => 'btn btn-mini btn-info' %>
+                  <h2>Associateds</h2>   
+                  <ul class="nav nav-tabs">
+                    <li role="presentation" class="active"><%= link_to "All Associateds", Associated %></li>
+                    <li role="presentation"><%= link_to "Show Customers", customers_path %></li>
+                    <li role="presentation"><%= link_to "Show Sponsors", sponsors_path %></li>
+                    <li role="presentation"><%= link_to "Show Providers", providers_path %></li>
+                    <%= link_to "New Associated", new_associated_path, :class => 'btn btn-mini btn-success' %>
+                  </ul>
                   <br><br>
                   <div class="table-responsive">
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-hover">
                       <thead>
                         <th>N°</th>
                         <th>Name</th>

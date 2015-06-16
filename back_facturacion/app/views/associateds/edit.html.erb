@@ -61,7 +61,7 @@
                   <%= link_to "Show Sponsors", new_associated_path, :class => 'btn btn-mini btn-info' %>
                   <%= link_to "Show Providers", new_associated_path, :class => 'btn btn-mini btn-info' %>
                   <br><br>
-                  <h3><strong>Edit: </strong><%= @associated.name %></h3>
+                  <h3>Edit: <strong><%= @associated.name %></strong></h3>
                   <%= semantic_form_for @associated do |f| %>
                   <%= f.input :name %>
                   <%= f.input :ci_rif %>

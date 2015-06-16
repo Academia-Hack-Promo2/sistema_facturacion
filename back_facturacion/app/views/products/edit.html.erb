@@ -55,7 +55,7 @@
                 <%= yield %>    
                 <div class="content">
                   <h2>Product</h2>
-                  <h3><strong>Edit: </strong><%= @product.name %></h3>
+                  <h3>Edit: <strong><%= @product.name %></strong></h3>
                   <%= semantic_form_for @product do |f| %>
                   <%= f.input :name %>
                   <%= f.input :description %>
