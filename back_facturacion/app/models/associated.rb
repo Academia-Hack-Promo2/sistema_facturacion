@@ -4,7 +4,7 @@ class Associated < ActiveRecord::Base
   validates :kind, inclusion: { in: :kind }
   validates :status, inclusion: { in: :status }
   validates :frequency, inclusion: { in: :frequency }
-  enum kind: [ :Sustomer, :Sponsor, :Provider ]
+  enum kind: [ :Customer, :Sponsor, :Provider ]
 	enum status: [ :Active, :Inactive ]
 	enum frequency: [ :Recurrent, :Punctual ]
 end

@@ -64,10 +64,10 @@
                   <%= f.input :email %>
                   <%= f.input :phone %>
                   <%= f.input :address %>
-                  <%= f.input :kind %>
-                  <%= f.input :frequency %>
                   <%= f.input :description %>
-                  <%= f.input :status %>
+                  <%= f.input :kind, :as => :select, :collection => Associated.kinds.keys.to_a %>
+                  <%= f.input :frequency, :as => :select, :collection => Associated.frequencies.keys.to_a %>
+                  <%= f.input :status, :as => :select, :collection => Associated.statuses.keys.to_a %>
                   <%= f.input :user_id %>
                   <%= f.submit :class => "btn btn-primary" %> 
                   <%= link_to "Cancel", "/associateds", :class => 'btn btn-success' %> 

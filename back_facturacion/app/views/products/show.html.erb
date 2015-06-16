@@ -85,7 +85,8 @@
                       </tbody>
                     </table>
                   </div>  
-                  <%= link_to "Return", "/products", :class => 'btn btn-mini btn-success' %>    <%= link_to  "Edit", edit_product_path(product), :class => 'btn btn-primary' %>                  
+                  <%= link_to "Return", "/products", :class => 'btn btn-mini btn-success' %>    <%= link_to  "Edit", edit_product_path(product), :class => 'btn btn-primary' %>
+                  <%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>                  
                         <% end %>        
                 </div>
             </div>

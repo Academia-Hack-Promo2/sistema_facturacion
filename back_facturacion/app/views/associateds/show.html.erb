@@ -107,7 +107,8 @@
                     </table>
                   </div> 
                    <%= link_to "Return", "/associateds", :class => 'btn btn-mini btn-success' %> 
-                   <%= link_to  "Edit", edit_associated_path(associated), :class => 'btn btn-mini btn-primary' %>                  
+                   <%= link_to  "Edit", edit_associated_path(associated), :class => 'btn btn-mini btn-primary' %>  
+                   <%= link_to 'Delete', associated, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger' %>                
                         <% end %>                          
                 </div>
             </div>
