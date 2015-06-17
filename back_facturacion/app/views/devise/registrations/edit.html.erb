@@ -11,6 +11,13 @@
 </div>
 
 <div class="form-group">
+    <%= f.label :username, class: "col-sm-2 control-label" %>
+    <div class="col-sm-6">
+        <%= f.text_field :username, class: "form-control" %>
+    </div>
+</div>
+
+<div class="form-group">
     <%= f.label :password, class: 'col-sm-2 control-label'  %> <i>(leave blank if you don't want to change it)</i>
     <div class="col-sm-6">
         <%= f.password_field :password, autocomplete: "off", class: 'form-control'  %>
@@ -34,7 +41,7 @@
 
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-6">
-        <%= f.submit "Update", class: "btn btn-primary" %>
+        <%= f.submit "Save", class: "btn btn-primary" %>
     </div>
 </div>
 

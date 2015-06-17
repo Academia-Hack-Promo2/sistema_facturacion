@@ -62,18 +62,16 @@
         <div class="page-content inset">
           <div class="row">
               <div class="col-md-12">
-                <%= bootstrap_flash %>
-                <%= yield %>    
                 <div class="content">                
                   <div class="row">
                   <h2>Providers</h2>  
                   <hr>                    
                   </div> 
                       <ul class="nav nav-tabs">
-                        <li role="presentation" ><%= link_to "All Associateds", Associated %></li>
-                        <li role="presentation" ><%= link_to "Show Customers", customers_path %></li>
-                        <li role="presentation" ><%= link_to "Show Sponsors", sponsors_path %></li>
-                        <li role="presentation" class="active"><%= link_to "Show Providers", providers_path %></li>
+                        <li role="presentation" ><%= link_to "Associateds", Associated %></li>
+                        <li role="presentation" ><%= link_to "Customers", customers_path %></li>
+                        <li role="presentation" ><%= link_to "Sponsors", sponsors_path %></li>
+                        <li role="presentation" class="active"><%= link_to "Providers", providers_path %></li>
                         <%= link_to "New Associated", new_associated_path, :class => 'btn btn-mini btn-success' %>
                       </ul>
                   <br><br>

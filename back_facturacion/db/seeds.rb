@@ -9,8 +9,8 @@
 users = User.create([
 
 
-	{ password: "1234567890", email: "pepe@correo.com", encrypted_password: "887776665", reset_password_token: "88990022", sign_in_count: 0, current_sign_in_ip: "asdfghjkkl", last_sign_in_ip: "lorem"},
-	{ password: "1234567890", email: "cheo@correo.com", encrypted_password: "887776665", reset_password_token: "88990022", sign_in_count: 0, current_sign_in_ip: "asdfghjkkl", last_sign_in_ip: "lorem"}
+	{ password: "1234567890", email: "pepe@correo.com", username: "pepe", encrypted_password: "887776665", reset_password_token: "88990022", sign_in_count: 0, current_sign_in_ip: "asdfghjkkl", last_sign_in_ip: "lorem"},
+	{ password: "1234567890", email: "cheo@correo.com", username: "cheo", encrypted_password: "887776665", reset_password_token: "88990022", sign_in_count: 0, current_sign_in_ip: "asdfghjkkl", last_sign_in_ip: "lorem"}
 
 	])
 

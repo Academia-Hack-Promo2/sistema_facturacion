@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150613204437) do
+ActiveRecord::Schema.define(version: 20150617192130) do
 
   create_table "associateds", force: :cascade do |t|
     t.string   "name",        limit: 30
@@ -80,11 +80,12 @@ ActiveRecord::Schema.define(version: 20150613204437) do
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 1,   default: 0,  null: false
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
+    t.string   "username",               limit: 20,               null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -10,10 +10,10 @@
   <nav class="navbar navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header navbar-right">
-          <p class="navbar-text pull-right">
+          <p class="navbar-text pull-right" style="margin-right:50px;">
             <% if user_signed_in? %>
-            Logged in as <strong><%= current_user.email %></strong>.
-            <%= link_to 'Edit profile', edit_user_registration_path %> |
+            <strong><%= current_user.username %></strong>.
+            <%= link_to 'Edit', edit_user_registration_path %> |
             <%= link_to "Logout", destroy_user_session_path, method: :delete  %>
             <% else %>
             <%= link_to "Sign up", new_user_registration_path  %> |
@@ -24,8 +24,7 @@
       </div>
     </div>
   </nav>  
-   
-<%= yield %>
-
+  <%= bootstrap_flash %>            
+            <%= yield %>
 </body>
 </html>
