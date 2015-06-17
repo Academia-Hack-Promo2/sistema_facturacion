@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :products
 
   devise_for :users
+  get 'welcome/index'
 
   resources :invoices
     get 'invoices/active' => 'invoices#active'
