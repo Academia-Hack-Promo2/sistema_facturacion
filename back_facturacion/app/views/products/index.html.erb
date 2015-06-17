@@ -43,9 +43,10 @@
              <%= image_tag "full-logo-aeb6cec9ca9eee43393c56f9d220e49c.png", :alt => "logo", :title => "logo"%>
         </ul>
           <ul class="sidebar-nav" id="sidebar">     
+            <li><a><%= link_to  "Users",User %></a></li>
             <li><a><%= link_to  "Associateds",Associated %></a></li>
-            <li><a><%= link_to  "Invoices",Invoice %></a></li>
             <li><a><%= link_to  "Products",Product %></a></li>
+            <li><a><%= link_to  "Invoices",Invoice %></a></li>
             <li><a>Payment Record</a></li>
             <li><a>Report</a></li>
             <li><a>Search</a></li>
@@ -63,19 +64,9 @@
                 <%= bootstrap_flash %>
                 <%= yield %>    
                 <div class="content">
-                  <h2>Products</h2>
                   <div class="row">
-                    <div class="col-lg-9">
-                      <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search Product">
-                        <span class="input-group-btn">
-                          <button class="btn btn-default" type="button">Go!</button>
-                        </span>
-                      </div>                  
-                    </div>
-                    <div class="col-lg-3">
-                     <%= link_to "New Product", new_product_path, :class => 'btn btn-mini btn-success' %>                  
-                    </div>
+                  <h2>Products</h2>
+                     <%= link_to "New Product", new_product_path, :class => 'btn btn-mini btn-success' %>    
                    <hr>                    
                   </div>
                     <div class="table-responsive">

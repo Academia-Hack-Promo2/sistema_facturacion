@@ -36,9 +36,8 @@
 
     <%= javascript_include_tag "application" %>
   </head>
-  <body>
-  
-    <div id="wrapper" class="active">
+  <body>  
+   <div id="wrapper" class="active">
       <div id="sidebar-wrapper">
         <ul id="sidebar_menu" class="sidebar-nav">
              <%= image_tag "full-logo-aeb6cec9ca9eee43393c56f9d220e49c.png", :alt => "logo", :title => "logo"%>
@@ -57,7 +56,6 @@
             <p>&copy; Hack 2015</p>
           </footer>
       </div>
-          
       <!-- Page content -->
       <div id="page-content-wrapper">
         <div class="page-content inset">
@@ -66,55 +64,35 @@
                 <%= bootstrap_flash %>
                 <%= yield %>    
                 <div class="content">
-                <div class="row">
-                  <h2>Sponsors</h2>   
-                  <hr>                    
-                  </div>
-                  <ul class="nav nav-tabs">
-                    <li role="presentation" ><%= link_to "All Associateds", Associated %></li>
-                    <li role="presentation" ><%= link_to "Show Customers", customers_path %></li>
-                    <li role="presentation" class="active"><%= link_to "Show Sponsors", sponsors_path %></li>
-                    <li role="presentation"><%= link_to "Show Providers", providers_path %></li>
-                    <%= link_to "New Associated", new_associated_path, :class => 'btn btn-mini btn-success' %>
-                  </ul>
-                  <br><br>
-                  <div class="table-responsive">
-                    <table class="table table-hover">
-                      <thead>
-                        <th>N°</th>
-                        <th>Name</th>
-                        <th>CI-RIF</th>
-                        <th>Alias</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Description</th>
-                        <th>Details</th>
-                        <th>Update</th>
-                        <th>Delete</th>
-                      </thead>
-                      <tbody>
-                        <% @sponsors.each_with_index do |associated, index| %>
-                        <tr>
-                          <td><%= index + 1 %></td>
-                          <td><%= associated.name %></td>
-                          <td><%= associated.ci_rif %></td>
-                          <td><%= associated.alias %></td>
-                          <td><%= associated.email %></td>
-                          <td><%= associated.phone %></td>
-                          <td><%= associated.description %></td>
-                          <td><%= link_to  "Details", associated_path(associated), :class => 'btn btn-mini btn-info' %></td>
-                          <td><%= link_to  "Edit", edit_associated_path(associated), :class => 'btn btn-mini btn-primary' %></td>
-                          <td><%= link_to 'Destroy', associated, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger' %></td>
-                        </tr>
-                        <% end %>
-                      </tbody>
-                    </table>
+                  <h2>Users</h2>
+                  <div class="row">  
+                   <hr>      
+                    <div class="table-responsive">
+                      <table class="table table-hover">
+                        <thead>
+                          <th>N°</th>
+                          <th>Email</th>
+                          <th>Update</th>
+                          <th>Delete</th>
+                        </thead>
+                        <tbody>
+                          <% @users.each_with_index do |user, index| %>
+                          <tr>
+                            <td><%= index + 1 %></td>
+                            <td><%= user.email %></td>
+                            <td><%= link_to 'Edit', edit_user_registration_path(user), :class => 'btn btn-primary' %></td>
+                            <td><%= link_to "Delete", destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %></td>
+                          </tr>
+                          <% end %>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>                  
                 </div> 
             </div>
           </div>
         </div>
-      </div>      
-  </div>
+      </div>        
+     
   </body>
 </html>

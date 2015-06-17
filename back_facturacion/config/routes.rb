@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   root 'welcomes#index'
+  get 'welcome/index'
   
   resources :products
 
   devise_for :users
-  get 'welcome/index'
+  resources :users, only: [:index, :show]
 
   resources :invoices
     get 'invoices/active' => 'invoices#active'
