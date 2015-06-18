@@ -36,18 +36,17 @@
 
     <%= javascript_include_tag "application" %>
   </head>
-  <body>
-  
-    <div id="wrapper" class="active">
+  <body>  
+   <div id="wrapper" class="active">
       <div id="sidebar-wrapper">
         <ul id="sidebar_menu" class="sidebar-nav">
              <%= image_tag "full-logo-aeb6cec9ca9eee43393c56f9d220e49c.png", :alt => "logo", :title => "logo"%>
         </ul>
           <ul class="sidebar-nav" id="sidebar">     
-            <li><a><%= link_to  "Users",User %></a></li>
             <li><a><%= link_to  "Associateds",Associated %></a></li>
             <li><a><%= link_to  "Products",Product %></a></li>
             <li><a><%= link_to  "Invoices",Invoice %></a></li>
+            <li><a><%= link_to  "Users",User %></a></li>
             <li><a>Payment Record</a></li>
             <li><a>Report</a></li>
             <li><a>Search</a></li>
@@ -57,62 +56,53 @@
             <p>&copy; Hack 2015</p>
           </footer>
       </div>
-          
       <!-- Page content -->
       <div id="page-content-wrapper">
         <div class="page-content inset">
           <div class="row">
               <div class="col-md-12">
                 <div class="content">
-                <div class="row">
-                  <h2>Sponsors</h2>   
-                  <hr>                    
+                  <div class="row">
+                  <h2>Products</h2>
+                     <%= link_to "New Product", new_product_path, :class => 'btn btn-mini btn-success' %>    
+                   <hr>                    
                   </div>
-                  <ul class="nav nav-tabs">
-                    <li role="presentation" ><%= link_to "Associateds", Associated %></li>
-                    <li role="presentation" ><%= link_to "Customers", customers_path %></li>
-                    <li role="presentation" class="active"><%= link_to "Sponsors", sponsors_path %></li>
-                    <li role="presentation"><%= link_to "Providers", providers_path %></li>
-                    <%= link_to "New Associated", new_associated_path, :class => 'btn btn-mini btn-success' %>
-                  </ul>
-                  <br><br>
-                  <div class="table-responsive">
-                    <table class="table table-hover">
-                      <thead>
-                        <th>N°</th>
-                        <th>Name</th>
-                        <th>CI-RIF</th>
-                        <th>Alias</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Description</th>
-                        <th>Details</th>
-                        <th>Update</th>
-                        <th>Delete</th>
-                      </thead>
-                      <tbody>
-                        <% @sponsors.each_with_index do |associated, index| %>
-                        <tr>
-                          <td><%= index + 1 %></td>
-                          <td><%= associated.name %></td>
-                          <td><%= associated.ci_rif %></td>
-                          <td><%= associated.alias %></td>
-                          <td><%= associated.email %></td>
-                          <td><%= associated.phone %></td>
-                          <td><%= associated.description %></td>
-                          <td><%= link_to  "Details", associated_path(associated), :class => 'btn btn-mini btn-info' %></td>
-                          <td><%= link_to  "Edit", edit_associated_path(associated), :class => 'btn btn-mini btn-primary' %></td>
-                          <td><%= link_to 'Destroy', associated, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger' %></td>
-                        </tr>
-                        <% end %>
-                      </tbody>
-                    </table>
+                    <div class="table-responsive">
+                      <table class="table table-hover">
+                        <thead>
+                          <th>N°</th>
+                          <th>Name</th>
+                          <th>Description</th>
+                          <th>Price</th>
+                          <th>Date</th>
+                          <th>Quantity</th>
+                          <th>Details</th>
+                          <th>Update</th>
+                          <th>Delete</th>
+                        </thead>
+                        <tbody>
+                          <% @products.each_with_index do |product, index| %>
+                          <tr>
+                            <td><%= index + 1 %></td>
+                            <td><%= product.name %></td>
+                            <td><%= product.description %></td>
+                            <td><%= product.price %></td>
+                            <td><%= product.date %></td>
+                            <td><%= product.quantity %></td>
+                            <td><%= link_to  "Details", product_path(product), :class => 'btn btn-info' %></td>
+                            <td><%= link_to  "Edit", edit_product_path(product), :class => 'btn btn-primary' %></td>
+                            <td><%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %></td>
+                          </tr>
+                          <% end %>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>                  
                 </div> 
             </div>
           </div>
         </div>
-      </div>      
-  </div>
+      </div>        
+     
   </body>
 </html>

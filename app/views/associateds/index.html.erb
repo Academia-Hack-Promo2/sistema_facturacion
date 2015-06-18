@@ -37,17 +37,18 @@
     <%= javascript_include_tag "application" %>
   </head>
   <body>
-  
+
+
     <div id="wrapper" class="active">
       <div id="sidebar-wrapper">
         <ul id="sidebar_menu" class="sidebar-nav">
              <%= image_tag "full-logo-aeb6cec9ca9eee43393c56f9d220e49c.png", :alt => "logo", :title => "logo"%>
         </ul>
           <ul class="sidebar-nav" id="sidebar">     
-            <li><a><%= link_to  "Users",User %></a></li>
             <li><a><%= link_to  "Associateds",Associated %></a></li>
             <li><a><%= link_to  "Products",Product %></a></li>
             <li><a><%= link_to  "Invoices",Invoice %></a></li>
+            <li><a><%= link_to  "Users",User %></a></li>
             <li><a>Payment Record</a></li>
             <li><a>Report</a></li>
             <li><a>Search</a></li>
@@ -56,7 +57,8 @@
           <footer>
             <p>&copy; Hack 2015</p>
           </footer>
-      </div>          
+      </div>
+          
       <!-- Page content -->
       <div id="page-content-wrapper">
         <div class="page-content inset">
@@ -64,12 +66,12 @@
               <div class="col-md-12">
                 <div class="content">
                 <div class="row">
-                  <h2>Customers</h2>   
+                  <h2>Associateds</h2>  
                   <hr>                    
                   </div>
                   <ul class="nav nav-tabs">
-                    <li role="presentation" ><%= link_to "Associateds", Associated %></li>
-                    <li role="presentation" class="active"><%= link_to "Customers", customers_path %></li>
+                    <li role="presentation" class="active"><%= link_to "Associateds", Associated %></li>
+                    <li role="presentation"><%= link_to "Customers", customers_path %></li>
                     <li role="presentation"><%= link_to "Sponsors", sponsors_path %></li>
                     <li role="presentation"><%= link_to "Providers", providers_path %></li>
                     <%= link_to "New Associated", new_associated_path, :class => 'btn btn-mini btn-success' %>
@@ -90,7 +92,7 @@
                         <th>Delete</th>
                       </thead>
                       <tbody>
-                        <% @customers.each_with_index do |associated, index| %>
+                        <% @associateds.each_with_index do |associated, index| %>
                         <tr>
                           <td><%= index + 1 %></td>
                           <td><%= associated.name %></td>
@@ -101,7 +103,7 @@
                           <td><%= associated.description %></td>
                           <td><%= link_to  "Details", associated_path(associated), :class => 'btn btn-mini btn-info' %></td>
                           <td><%= link_to  "Edit", edit_associated_path(associated), :class => 'btn btn-mini btn-primary' %></td>
-                          <td><%= link_to 'Destroy', associated, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger' %></td>
+                          <td><%= link_to 'Delete', associated, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger' %></td>
                         </tr>
                         <% end %>
                       </tbody>

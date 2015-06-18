@@ -29,50 +29,55 @@
     <%= javascript_include_tag "application" %>
   </head>
   <body>
-   <div id="wrapper" class="active">
+  
+    <div id="wrapper" class="active">
       <div id="sidebar-wrapper">
-        <ul id="sidebar_menu" class="sidebar-nav">
-             <%= image_tag "full-logo-aeb6cec9ca9eee43393c56f9d220e49c.png", :alt => "logo", :title => "logo"%>
+      <ul id="sidebar_menu" class="sidebar-nav">
+           <%= image_tag "full-logo-aeb6cec9ca9eee43393c56f9d220e49c.png", :alt => "logo", :title => "logo"%>
+      </ul>
+        <ul class="sidebar-nav" id="sidebar">      
+          <li><a><%= link_to  "Associateds",Associated %></a></li>
+          <li><a><%= link_to  "Products",Product %></a></li>
+          <li><a><%= link_to  "Invoices",Invoice %></a></li>
+          <li><a><%= link_to  "Users",User %></a></li>
+          <li><a>Payment Record</a></li>
+          <li><a>Report</a></li>
+          <li><a>Search</a></li>
         </ul>
-          <ul class="sidebar-nav" id="sidebar">     
-            <li><a><%= link_to  "Users",User %></a></li>
-            <li><a><%= link_to  "Associateds",Associated %></a></li>
-            <li><a><%= link_to  "Products",Product %></a></li>
-            <li><a><%= link_to  "Invoices",Invoice %></a></li>
-            <li><a>Payment Record</a></li>
-            <li><a>Report</a></li>
-            <li><a>Search</a></li>
-          </ul>
-          <br><br>
-          <footer>
-            <p>&copy; Hack 2015</p>
-          </footer>
+        <br><br>
+        <footer>
+          <p>&copy; Hack 2015</p>
+        </footer>
       </div>
-          <!-- Page content -->
-      <div id="page-content-wrapper">
+       <div id="page-content-wrapper">
         <div class="page-content inset">
           <div class="row">
               <div class="col-md-12">
                 <div class="content">
                 <div class="row">
-                  <h2>New Product</h2>
+                  <h2>Associated</h2>
+                  <h3><strong>Edit <%= @associated.kind %>:</strong> </strong><%= @associated.name %></h3>
                   <hr>                    
                   </div>
-                  <%= semantic_form_for @product do |f| %>
+                  <%= semantic_form_for @associated do |f| %>
                   <%= f.input :name %>
+                  <%= f.input :ci_rif %>
+                  <%= f.input :alias %>
+                  <%= f.input :email %>
+                  <%= f.input :phone %>
+                  <%= f.input :address %>
+                  <%= f.input :kind, :as => :select, :collection => Associated.kinds.keys.to_a %>
+                  <%= f.input :frequency, :as => :select, :collection => Associated.frequencies.keys.to_a %>
+                  <%= f.input :status, :as => :select, :collection => Associated.statuses.keys.to_a %>
                   <%= f.input :description %>
-                  <%= f.input :price %>
-                  <%= f.input :date %>
-                  <%= f.input :quantity %>
                   <%= f.input :user_id %>
-                  <%= f.input :invoice_id %>
                   <%= f.submit :class => "btn btn-primary" %> 
-                  <%= link_to "Cancel", "/products", :class => 'btn btn-success' %> <% end %>         
+                  <%= link_to "Cancel", "/associateds", :class => 'btn btn-success' %>                   
+                  <% end %>          
                 </div>
             </div>
           </div>
         </div>
       </div>
-      </div>      
   </body>
 </html>
