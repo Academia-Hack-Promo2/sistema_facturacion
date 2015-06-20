@@ -1,0 +1,49 @@
+ 
+<div id="page-content-wrapper">
+  <div class="page-content inset">
+    <div class="row">
+        <div class="col-md-12">
+          <div class="content">
+            <div class="row">
+            <h2>Bills</h2>
+               <%= link_to "New Bill", new_invoice_path, :class => 'btn btn-mini btn-success' %>    
+             <hr>                    
+            </div>
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <th>N°</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th>Description</th>
+                    <th>Total</th>
+                    <th>Date</th>
+                    <th>Associated</th>
+                    <th>Details</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                  </thead>
+                  <tbody>
+                    <% @invoices.each_with_index do |invoice, index| %>
+                    <tr>
+                      <td><%= index + 1 %></td>
+                      <td><%= invoice.kind_operation %></td>
+                      <td><%= invoice.status_operation %></td>
+                      <td><%= invoice.description %></td>
+                      <td><%= invoice.total %></td>
+                      <td><%= invoice.date %></td>
+                      <td><%= invoice.associated_id %></td>
+                      <td><%= link_to  "Details", invoice_path(invoice), :class => 'btn btn-info' %></td>
+                      <td><%= link_to  "Edit", edit_invoice_path(invoice), :class => 'btn btn-primary' %></td>
+                      <td><%= link_to 'Delete', invoice, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %></td>
+                    </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>                  
+          </div> 
+      </div>
+    </div>
+  </div>    
+

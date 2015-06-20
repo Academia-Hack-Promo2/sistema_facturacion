@@ -57,17 +57,17 @@ associateds = Associated.create([
 
 
 invoices = Invoice.create([
-	{kind_operation: 0, status_operation: true, kind_payment: "transferencia", description: "Lorem ipsum dolor sit amet At, architecto.", total: 40000.0, date: "2015-06-10", document: "pdf", payment_proof: "pdf", associated_id: 1, user_id: 1},
-	{kind_operation: 1, status_operation: false, kind_payment: "transferencia", description: "Lorem ipsum dolor sit amet At, architecto.", total: 40000.0, date: "2015-06-10", document: "pdf", payment_proof: "pdf", associated_id: 1, user_id: 1},
-	{kind_operation: 0, status_operation: true, kind_payment: "transferencia", description: "Lorem ipsum dolor sit amet At, architecto.", total: 40000.0, date: "2015-06-10", document: "pdf", payment_proof: "pdf", associated_id: 1, user_id: 1},
-	{kind_operation: 1, status_operation: true, kind_payment: "transferencia", description: "Lorem ipsum dolor sit amet At, architecto.", total: 40000.0, date: "2015-06-10", document: "pdf", payment_proof: "pdf", associated_id: 1, user_id: 1},
-	{kind_operation: 0, status_operation: false, kind_payment: "transferencia", description: "Lorem ipsum dolor sit amet At, architecto.", total: 40000.0, date: "2015-06-10", document: "pdf", payment_proof: "pdf", associated_id: 1, user_id: 1},
-	{kind_operation: 1, status_operation: true, kind_payment: "transferencia", description: "Lorem ipsum dolor sit amet At, architecto.", total: 40000.0, date: "2015-06-10", document: "pdf", payment_proof: "pdf", associated_id: 1, user_id: 1},
-	{kind_operation: 0, status_operation: false, kind_payment: "transferencia", description: "Lorem ipsum dolor sit amet At, architecto.", total: 40000.0, date: "2015-06-10", document: "pdf", payment_proof: "pdf", associated_id: 1, user_id: 2},
-	{kind_operation: 1, status_operation: true, kind_payment: "transferencia", description: "Lorem ipsum dolor sit amet At, architecto.", total: 40000.0, date: "2015-06-10", document: "pdf", payment_proof: "pdf", associated_id: 1, user_id: 2},
-	{kind_operation: 0, status_operation: false, kind_payment: "transferencia", description: "Lorem ipsum dolor sit amet At, architecto.", total: 40000.0, date: "2015-06-10", document: "pdf", payment_proof: "pdf", associated_id: 1, user_id: 2},
-	{kind_operation: 1, status_operation: true, kind_payment: "transferencia", description: "Lorem ipsum dolor sit amet At, architecto.", total: 40000.0, date: "2015-06-10", document: "pdf", payment_proof: "pdf", associated_id: 1, user_id: 2},
-	{kind_operation: 0, status_operation: false, kind_payment: "transferencia", description: "Lorem ipsum dolor sit amet At, architecto.", total: 40000.0, date: "2015-06-10", document: "pdf", payment_proof: "pdf",associated_id: 1, user_id: 2}
+	{kind_operation: 0, status_operation: 0, kind_payment: "transferencia", description: "Lorem ipsum dolor sit amet At, architecto.", total: 40000.0, date: "2015-06-10", document: "pdf", payment_proof: "pdf", associated_id: 1, user_id: 1},
+	{kind_operation: 1, status_operation: 1, kind_payment: "transferencia", description: "Lorem ipsum dolor sit amet At, architecto.", total: 40000.0, date: "2015-06-10", document: "pdf", payment_proof: "pdf", associated_id: 1, user_id: 1},
+	{kind_operation: 0, status_operation: 0, kind_payment: "transferencia", description: "Lorem ipsum dolor sit amet At, architecto.", total: 40000.0, date: "2015-06-10", document: "pdf", payment_proof: "pdf", associated_id: 1, user_id: 1},
+	{kind_operation: 1, status_operation: 1, kind_payment: "transferencia", description: "Lorem ipsum dolor sit amet At, architecto.", total: 40000.0, date: "2015-06-10", document: "pdf", payment_proof: "pdf", associated_id: 1, user_id: 1},
+	{kind_operation: 0, status_operation: 0, kind_payment: "transferencia", description: "Lorem ipsum dolor sit amet At, architecto.", total: 40000.0, date: "2015-06-10", document: "pdf", payment_proof: "pdf", associated_id: 1, user_id: 1},
+	{kind_operation: 1, status_operation: 1, kind_payment: "transferencia", description: "Lorem ipsum dolor sit amet At, architecto.", total: 40000.0, date: "2015-06-10", document: "pdf", payment_proof: "pdf", associated_id: 1, user_id: 1},
+	{kind_operation: 0, status_operation: 0, kind_payment: "transferencia", description: "Lorem ipsum dolor sit amet At, architecto.", total: 40000.0, date: "2015-06-10", document: "pdf", payment_proof: "pdf", associated_id: 1, user_id: 2},
+	{kind_operation: 1, status_operation: 0, kind_payment: "transferencia", description: "Lorem ipsum dolor sit amet At, architecto.", total: 40000.0, date: "2015-06-10", document: "pdf", payment_proof: "pdf", associated_id: 1, user_id: 2},
+	{kind_operation: 0, status_operation: 1, kind_payment: "transferencia", description: "Lorem ipsum dolor sit amet At, architecto.", total: 40000.0, date: "2015-06-10", document: "pdf", payment_proof: "pdf", associated_id: 1, user_id: 2},
+	{kind_operation: 1, status_operation: 0, kind_payment: "transferencia", description: "Lorem ipsum dolor sit amet At, architecto.", total: 40000.0, date: "2015-06-10", document: "pdf", payment_proof: "pdf", associated_id: 1, user_id: 2},
+	{kind_operation: 0, status_operation: 1, kind_payment: "transferencia", description: "Lorem ipsum dolor sit amet At, architecto.", total: 40000.0, date: "2015-06-10", document: "pdf", payment_proof: "pdf",associated_id: 1, user_id: 2}
 	])
 
 products = Product.create([

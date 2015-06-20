@@ -1,11 +1,11 @@
 class CreateInvoices < ActiveRecord::Migration
   def change
     create_table :invoices do |t|
-      t.integer :kind_operation, limit: 1, null:false
-      t.boolean :status_operation, limit: 1, null:false
+      t.integer :kind_operation, default: 0
+      t.integer :status_operation, default: 0
       t.string :kind_payment, limit: 30
       t.string :description, limit: 150
-      t.decimal :total, limit: 11
+      t.decimal :total, precision: 10, scale: 2
       t.date :date
       t.string :document, limit: 150
       t.string :payment_proof, limit: 150

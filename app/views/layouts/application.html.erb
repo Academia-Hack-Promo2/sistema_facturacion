@@ -16,7 +16,7 @@
               <ul class="sidebar-nav" id="sidebar">     
                 <li><a><%= link_to  "Associateds",Associated %></a></li>
                 <li><a><%= link_to  "Products",Product %></a></li>
-                <li><a><%= link_to  "Invoices",Invoice %></a></li>
+                <li><a><%= link_to  "Bills",Invoice %></a></li>
                 <li><a><%= link_to  "Users",User %></a></li>
                 <li><a>Payment Record</a></li>
                 <li><a>Report</a></li>
@@ -45,21 +45,13 @@
                               <%= link_to "Sign up", new_user_registration_path  %> |
                               <%= link_to "Login", new_user_session_path  %>
                               <% end %>
-                            </p>
-                          </a>
+                              </p>
+                            </a>
+                          </div>
                         </div>
-                      </div>
-                    </nav>  
-                    <%= bootstrap_flash %>            
-                    <%= yield %> 
-
-
-
-
-
-
-
-                     
+                      </nav>  
+                        <%= bootstrap_flash %>            
+                        <%= yield %>     
                     </div> 
                 </div>
               </div>
