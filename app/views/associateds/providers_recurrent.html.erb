@@ -1,21 +1,22 @@
 
-
 <div id="page-content-wrapper">
   <div class="page-content inset">
     <div class="row">
         <div class="col-md-12">
-          <div class="content">
-          <div class="row">
-            <h1>Associateds</h1>  
+          <div class="content">                
+            <div class="row">
+            <h1>Providers</h1>  
             <hr>                    
-            </div>
-            <ul class="nav nav-tabs">
-              <li role="presentation" class="active"><%= link_to "Associateds", Associated %></li>
-              <li role="presentation"><%= link_to "Customers", customers_path %></li>
-              <li role="presentation"><%= link_to "Sponsors", sponsors_path %></li>
-              <li role="presentation"><%= link_to "Providers", providers_path %></li>
-              <%= link_to "New Associated", new_associated_path, :class => 'btn btn-mini btn-success' %>
-            </ul>
+            </div> 
+                <ul class="nav nav-tabs">
+                  <li role="presentation" ><%= link_to "Associateds", Associated %></li>
+                    <li role="presentation"><%= link_to "Providers", providers_path %></li>
+                    <li role="presentation"><%= link_to "Actives", providers_active_path %></li>
+                    <li role="presentation"><%= link_to "Inactives", providers_inactive_path %></li>
+                    <li role="presentation"><%= link_to "Punctuals", providers_punctual_path %></li>
+                    <li role="presentation" class="active"><%= link_to "Recurrents", providers_recurrent_path %></li>
+                    <%= link_to "New Associated", new_associated_path, :class => 'btn btn-mini btn-success' %>
+                </ul>
             <br><br>
             <div class="table-responsive">
               <table class="table table-hover">
@@ -32,7 +33,7 @@
                   <th>Delete</th>
                 </thead>
                 <tbody>
-                  <% @associateds.each_with_index do |associated, index| %>
+                  <% @providers_recurrent.each_with_index do |associated, index| %>
                   <tr>
                     <td><%= index + 1 %></td>
                     <td><%= associated.name %></td>
@@ -43,7 +44,7 @@
                     <td><%= associated.description %></td>
                     <td><%= link_to  "Details", associated_path(associated), :class => 'btn btn-mini btn-info' %></td>
                     <td><%= link_to  "Edit", edit_associated_path(associated), :class => 'btn btn-mini btn-primary' %></td>
-                    <td><%= link_to 'Delete', associated, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger' %></td>
+                    <td><%= link_to 'Destroy', associated, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger' %></td>
                   </tr>
                   <% end %>
                 </tbody>

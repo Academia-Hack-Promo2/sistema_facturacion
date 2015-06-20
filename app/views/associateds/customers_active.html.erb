@@ -10,8 +10,8 @@
                   </div>
                   <ul class="nav nav-tabs">
                     <li role="presentation" ><%= link_to "Associateds", Associated %></li>
-                    <li role="presentation" class="active"><%= link_to "Customers", customers_path %></li>
-                    <li role="presentation"><%= link_to "Actives", customers_active_path %></li>
+                    <li role="presentation"><%= link_to "Customers", customers_path %></li>
+                    <li role="presentation" class="active"><%= link_to "Actives", customers_active_path %></li>
                     <li role="presentation"><%= link_to "Inactives", customers_inactive_path %></li>
                     <li role="presentation"><%= link_to "Punctuals", customers_punctual_path %></li>
                     <li role="presentation"><%= link_to "Recurrents", customers_recurrent_path %></li>
@@ -33,7 +33,7 @@
                         <th>Delete</th>
                       </thead>
                       <tbody>
-                        <% @customers.each_with_index do |associated, index| %>
+                        <% @customers_active.each_with_index do |associated, index| %>
                         <tr>
                           <td><%= index + 1 %></td>
                           <td><%= associated.name %></td>

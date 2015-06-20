@@ -49,58 +49,61 @@ class AssociatedsController < ApplicationController
     @customers = Associated.where(kind: 0)
   end
 
+  def customers_recurrent 
+    @customers_recurrent = Associated.where(kind: 0, frequency: 0)
+  end
+
+  def customers_punctual 
+    @customers_punctual = Associated.where(kind: 0, frequency: 1)
+  end
+
+  def customers_active 
+    @customers_active = Associated.where(kind: 0, status: 0)
+  end
+
+  def customers_inactive 
+    @customers_inactive = Associated.where(kind: 0, status: 1)
+  end
+
   def sponsors 
     @sponsors = Associated.where(kind: 1)
+  end
+
+  def sponsors_recurrent 
+    @sponsors_recurrent = Associated.where(kind: 1, frequency: 0)
+  end
+
+  def sponsors_punctual 
+    @sponsors_punctual = Associated.where(kind: 1, frequency: 1)
+  end
+
+  def sponsors_active 
+    @sponsors_active = Associated.where(kind: 1, status: 0)
+  end
+
+  def sponsors_inactive 
+    @sponsors_inactive = Associated.where(kind: 1, status: 1)
   end
 
   def providers 
     @providers = Associated.where(kind: 2)
   end
 
-  # def all
-  # 	associateds = Associated.where(:status => 0)
-		# if associateds
-		# 	render json: associateds, :except => [:created_at, :updated_at]
-		# else 
-		# 	render json: {"Mensaje":"no hay asociados registrados"}
-		# end  	
-  # end
+  def providers_recurrent 
+    @providers_recurrent = Associated.where(kind: 2, frequency: 0)
+  end
 
-  # def customers
-  #   customers = Associated.where(kind: 0, status:0)
-  #   if customers
-  #     render json: customers, :except => [:created_at, :updated_at]
-  #   else
-  #     render json: {"Mensaje":"no hay clientes registrados"}
-  #   end
-  # end  
+  def providers_punctual 
+    @providers_punctual = Associated.where(kind: 2, frequency: 1)
+  end
 
-  # def sponsors
-  #   sponsors = Associated.where(kind:1, status:0)
-  #   if sponsors.length>=1
-  #     render json: sponsors, :except => [:created_at, :updated_at]
-  #   else
-  #     render json: {"Mensaje":"no hay sponsors registrados"}
-  #   end
-  # end
+  def providers_active 
+    @providers_active = Associated.where(kind: 2, status: 0)
+  end
 
-  # def all_sponsors
-  #   sponsors = Associated.where(kind:1)
-  #   if sponsors
-  #     render json: sponsors, :except => [:created_at, :updated_at]
-  #   else
-  #     render json: {"Mensaje":"no hay sponsors registrados"}
-  #   end
-  # end
-
-  # def providers
-  #   providers = Associated.where(kind: 2)
-  #   if providers
-  #     render json: providers, :except => [:created_at, :updated_at]
-  #   else
-  #     render json: {"Mensaje":"no hay proveedores registrados"}
-  #   end
-  # end
+  def providers_inactive 
+    @providers_inactive = Associated.where(kind: 2, status: 1)
+  end
 
   private
 

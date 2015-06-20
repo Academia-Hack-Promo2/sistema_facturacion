@@ -14,11 +14,27 @@ Rails.application.routes.draw do
     get 'invoices/shopping' => 'invoices#shopping'
     
     
-  resources :associateds    
+  resources :associateds   
+    #Customers 
     get 'customers' => 'associateds#customers'
+    get 'customers/recurrent' => 'associateds#customers_recurrent'
+    get 'customers/punctual' => 'associateds#customers_punctual'
+    get 'customers/active' => 'associateds#customers_active'
+    get 'customers/inactive' => 'associateds#customers_inactive'
+    #Providers
     get 'providers' => 'associateds#providers'
+    get 'providers/recurrent' => 'associateds#providers_recurrent'
+    get 'providers/punctual' => 'associateds#providers_punctual'
+    get 'providers/active' => 'associateds#providers_active'
+    get 'providers/inactive' => 'associateds#providers_inactive'
+    #Sponsors
     get 'sponsors' => 'associateds#sponsors'
-    #muestra todos los asociados activos o inactivos
+    get 'sponsors/recurrent' => 'associateds#sponsors_recurrent'
+    get 'sponsors/punctual' => 'associateds#sponsors_punctual'
+    get 'sponsors/active' => 'associateds#sponsors_active'
+    get 'sponsors/inactive' => 'associateds#sponsors_inactive'
+
+    
 
 
   
