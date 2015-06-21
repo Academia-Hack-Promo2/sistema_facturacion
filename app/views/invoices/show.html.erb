@@ -13,10 +13,13 @@
               <table class="table table-hover">
                 <thead>
                   <th>Type</th>
-                  <th>Status</th>
                   <th>Payment</th>
+                  <th>Invoice</th>
                   <th>Description</th>
+                  <th>Subtotal</th>
+                  <th>Tax</th>
                   <th>Total</th>
+                  <th>Balance</th>
                   <th>Date</th>
                   <th>Document</th>
                   <th>Payment Proof</th>
@@ -26,10 +29,13 @@
                 <tbody>                        
                   <tr>
                     <td><%= invoice.kind_operation %></td>
-                    <td><%= invoice.status_operation %></td>
                     <td><%= invoice.kind_payment %></td>
+                    <td><%= invoice.kind_invoice %></td>
                     <td><%= invoice.description %></td>
+                    <td><%= invoice.subtotal %></td>
+                    <td><%= invoice.tax %></td>
                     <td><%= invoice.total %></td>
+                    <td><%= invoice.balance %></td>
                     <td><%= invoice.date %></td>
                     <td><%= invoice.document %></td>
                     <td><%= invoice.payment_proof %></td>

@@ -11,10 +11,13 @@
           </div>
           <%= semantic_form_for @invoice do |f| %>
           <%= f.input :kind_operation, :as => :select, :collection => Invoice.kind_operations.keys.to_a %>
-          <%= f.input :status_operation, :as => :select, :collection => Invoice.status_operations.keys.to_a  %>
-          <%= f.input :kind_payment %>
+          <%= f.input :kind_payment, :as => :select, :collection => Invoice.kind_payments.keys.to_a  %>
+          <%= f.input :kind_invoice, :as => :select, :collection => Invoice.kind_invoices.keys.to_a  %>
           <%= f.input :description %>
+          <%= f.input :subtotal %>
+          <%= f.input :tax %>
           <%= f.input :total %>
+          <%= f.input :balance %>
           <%= f.input :date %>
           <%= f.input :document %>
           <%= f.input :payment_proof %>

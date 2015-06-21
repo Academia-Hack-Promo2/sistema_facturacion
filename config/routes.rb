@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   root 'welcomes#index'
-  get 'welcome/index'
   
   resources :products
 
@@ -8,11 +7,19 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
 
   resources :invoices
-    get 'invoices/active' => 'invoices#active'
-    get 'invoices/inactive' => 'invoices#inactive'
-    get 'invoices/sale' => 'invoices#sale'
-    get 'invoices/shopping' => 'invoices#shopping'
-    
+    #Sales
+    get 'sales' => 'invoices#sales'
+    get 'sales/draft' => 'invoices#sales_draft'
+    get 'sales/legal' => 'invoices#sales_legal'
+    get 'sales/cash' => 'invoices#sales_cash'
+    get 'sales/credit' => 'invoices#sales_credit'
+
+    #Purchases
+    get 'purchases' => 'invoices#purchases'
+    get 'purchases/draft' => 'invoices#purchases_draft'
+    get 'purchases/legal' => 'invoices#purchases_legal'
+    get 'purchases/cash' => 'invoices#purchases_cash'
+    get 'purchases/credit' => 'invoices#purchases_credit'    
     
   resources :associateds   
     #Customers 

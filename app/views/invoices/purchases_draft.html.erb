@@ -5,23 +5,25 @@
         <div class="col-md-12">
           <div class="content">
             <div class="row">
-            <h1>Bills</h1>
-                  
+            <h1>Purchases</h1>
+                   
              <hr>                    
             </div>
             <ul class="nav nav-tabs">
-              <li role="presentation" class="active"><%= link_to "Bills", Invoice %></li>
-              <li role="presentation"><%= link_to "Sales", "/sales" %></li>
-              <li role="presentation"><%= link_to "Purchases", "/purchases" %></li>
-               <%= link_to "New Bill", new_invoice_path, :class => 'btn btn-mini btn-success' %>
+              <li role="presentation"><%= link_to "Purchases", purchases_path %></li>
+              <li role="presentation" class="active"><%= link_to "Draft", purchases_draft_path %></li>
+              <li role="presentation"><%= link_to "Legal", purchases_legal_path %></li>
+              <li role="presentation"><%= link_to "Cash", purchases_cash_path %></li>
+              <li role="presentation"><%= link_to "Credit", purchases_credit_path %></li>
+              <%= link_to "New Sale", new_invoice_path, :class => 'btn btn-mini btn-success' %>
             </ul>
             <br><br>
               <div class="table-responsive">
                 <table class="table table-hover">
                   <thead>
                     <th>N°</th>
-                    <th>Operation</th>
                     <th>Payment</th>
+                    <th>Invoice</th>
                     <th>Description</th>
                     <th>Total</th>                    
                     <th>Date</th>                    
@@ -31,11 +33,11 @@
                     <th>Delete</th>
                   </thead>
                   <tbody>
-                    <% @invoices.each_with_index do |invoice, index| %>
+                    <% @purchases.each_with_index do |invoice, index| %>
                     <tr>
                       <td><%= index + 1 %></td>
-                      <td><%= invoice.kind_operation %></td>
                       <td><%= invoice.kind_payment %></td>
+                      <td><%= invoice.kind_invoice %></td>
                       <td><%= invoice.description %></td>
                       <td><%= invoice.subtotal %></td>
                       <td><%= invoice.date %></td>

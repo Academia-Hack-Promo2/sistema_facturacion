@@ -18,7 +18,7 @@ class InvoicesController < ApplicationController
   def create
     @invoice = Invoice.new(permit)
     if @invoice.save
-      redirect_to invoices_path, :notice => 'Invoice Successfully Added.'
+      redirect_to invoices_path, :notice => 'Bill Successfully Added.'
     else
       render 'new'
     end
@@ -30,108 +30,74 @@ class InvoicesController < ApplicationController
 
   def update
     @invoice = Invoice.find(params[:id])
-    if @invoice.update(permit)
-      redirect_to invoices_path, :notice => 'Invoice Successfully Updated.'
+    if @invoice.kind_invoice == 'Draft'
+      if @invoice.update(permit)
+        redirect_to invoices_path, :notice => 'Draft Bill Successfully Updated.'
+      else
+        render 'edit'
+      end
     else
-      render 'edit'
+      redirect_to invoices_path, :alert => 'The Legal Bill Should Not Be Changed.'
     end
   end 
 
   def destroy    
-    if Invoice.find(params[:id]).destroy
-      redirect_to invoices_path, :notice => 'Invoice Successfully Deleted.'
+    @invoice = Invoice.find(params[:id])
+    if @invoice.kind_invoice == 'Draft'
+      if @invoice.destroy
+        redirect_to invoices_path, :notice => 'Draft Bill Successfully Deleted.'
+      else
+        render 'destroy'
+      end
     else
-      render 'destroy'
-    end 
+      redirect_to invoices_path, :alert => 'The Legal Bill Should Not Be Deleted.'
+    end
   end  
 
-  # def index
-  # 	invoices = Invoice.all
-  # 	if invoices != nil
-  # 		render json: invoices, except: [:created_at, :updated_at]
-  # 	else
-  # 		render json: {"Mensaje":"no hay facturas creadas"}
-  # 	end
-  # end
+  def sales 
+    @sales = Invoice.where(kind_operation: 0)
+  end
 
-  # def create
-  # 	invoice = Invoice.new(permit)
-  # 	if invoice.valid?
-  # 		invoice.save
-  # 		render json: invoice, except: [:created_at, :updated_at]
-  # 	else
-  # 		render json: {"Mensaje":"parametros incorrectos"}
-  # 	end
-  # end
+  def sales_draft 
+    @sales = Invoice.where(kind_operation: 0, kind_invoice: 0)
+  end  
 
-  # def update
-  # 	if Invoice.exists?(params[:id]) 
-  # 		invoice = Invoice.find(params[:id])
-  # 		if invoice.status_operation == false
-	 #  		invoice = Invoice.update(params[:id], permit)
-	 #  		render json: invoice
-  # 		else
-  # 			render json: {"Mensaje":"La factura ya esta activa"}	
-  # 		end
-  # 	else
-  # 		render json: {"Mensaje":"La factura no existe"}
-  # 	end
-  # end
+  def sales_legal 
+    @sales = Invoice.where(kind_operation: 0, kind_invoice: 1)
+  end
 
-  # def destroy
-  # 	if Invoice.exists?(params[:id])
-  # 		invoice = Invoice.find(params[:id])
-  # 		if invoice.status_operation == false
-  # 			invoice.destroy
-  # 			render json: invoice
-  # 		else
-  # 		render json: {"Mensaje":"La factura esta activa y no puede ser eliminada"}	
-  # 		end
-  # 	else	
-  # 		render json: {"Mensaje":"La factura no existe"}
-  # 	end
-  # end
+  def sales_cash 
+    @sales = Invoice.where(kind_operation: 0, kind_payment: 0)
+  end
 
-  # def sale
-  # 	invoices = Invoice.where(kind_operation: 0)
-  # 	if invoices.length>=1
-  # 		render json: invoices
-  # 	else
-  # 		render json: {"Mensaje":"No tienes ventas"}
-  # 	end
-  # end
+  def sales_credit 
+    @sales = Invoice.where(kind_operation: 0, kind_payment: 1)
+  end
 
-  # def shopping
-  # 	invoices = Invoice.where(kind_operation: 1)
-  # 	if invoices.length>=1
-  # 		render json: invoices
-  # 	else
-  # 		render json: {"Mensaje":"No tienes compras"}
-  # 	end
-  # end
+  def purchases 
+    @purchases = Invoice.where(kind_operation: 1)
+  end
 
-  # def active
-  # 	invoices = Invoice.where(status_operation: 0)
-  # 	if invoices.length>=1
-  # 		render json: invoices
-  # 	else
-  # 		render json: {"Mensaje":"No tienes facturas activas"}
-  # 	end
-  # end
+  def purchases_draft 
+    @purchases = Invoice.where(kind_operation: 1, kind_invoice: 0)
+  end
 
-  # def inactive
-  # 	invoices = Invoice.where(status_operation: 1)
-  # 	if invoices.length>=1
-  # 		render json: invoices
-  # 	else
-  # 		render json: {"Mensaje":"No tienes facturas inactivas"}
-  # 	end
-  # end
+  def purchases_legal 
+    @purchases = Invoice.where(kind_operation: 1, kind_invoice: 1)
+  end
+
+  def purchases_cash 
+    @purchases = Invoice.where(kind_operation: 1, kind_payment: 0)
+  end
+
+  def purchases_credit 
+    @purchases = Invoice.where(kind_operation: 1, kind_payment: 1)
+  end  
 
   private
 
 	  def permit
-	  	params.require(:invoice).permit(:kind_operation, :status_operation, :total,
-	  								:kind_payment, :description, :date, :document, :payment_proof, :associated_id, :user_id)
+	  	params.require(:invoice).permit(:kind_operation, :kind_payment, :kind_invoice, :description, :subtotal, :tax, :total,
+	  								:balance, :date, :document, :payment_proof, :associated_id, :user_id)
 	  end	
 end

@@ -39,7 +39,7 @@ class AssociatedsController < ApplicationController
 
   def destroy    
     if Associated.find(params[:id]).destroy
-      redirect_to associateds_path, :notice => 'Associated Successfully Deleted.'
+      redirect_to associateds_path, :alert => 'Associated Successfully Deleted.'
     else
       render 'destroy'
     end 

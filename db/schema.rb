@@ -32,18 +32,21 @@ ActiveRecord::Schema.define(version: 20150617192130) do
   add_index "associateds", ["user_id"], name: "index_associateds_on_user_id", using: :btree
 
   create_table "invoices", force: :cascade do |t|
-    t.integer  "kind_operation",   limit: 4,                            default: 0
-    t.integer  "status_operation", limit: 4,                            default: 0
-    t.string   "kind_payment",     limit: 30
-    t.string   "description",      limit: 150
-    t.decimal  "total",                        precision: 10, scale: 2
+    t.integer  "kind_operation", limit: 4,                            default: 0
+    t.integer  "kind_payment",   limit: 4,                            default: 0
+    t.integer  "kind_invoice",   limit: 4,                            default: 0
+    t.string   "description",    limit: 150
+    t.decimal  "subtotal",                   precision: 10, scale: 2
+    t.decimal  "tax",                        precision: 10, scale: 2
+    t.decimal  "total",                      precision: 10, scale: 2
+    t.decimal  "balance",                    precision: 10, scale: 2
     t.date     "date"
-    t.string   "document",         limit: 150
-    t.string   "payment_proof",    limit: 150
-    t.integer  "associated_id",    limit: 4
-    t.integer  "user_id",          limit: 4
-    t.datetime "created_at",                                                        null: false
-    t.datetime "updated_at",                                                        null: false
+    t.string   "document",       limit: 150
+    t.string   "payment_proof",  limit: 150
+    t.integer  "associated_id",  limit: 4
+    t.integer  "user_id",        limit: 4
+    t.datetime "created_at",                                                      null: false
+    t.datetime "updated_at",                                                      null: false
   end
 
   add_index "invoices", ["associated_id"], name: "index_invoices_on_associated_id", using: :btree
