@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150617192130) do
+ActiveRecord::Schema.define(version: 20150621035124) do
 
   create_table "associateds", force: :cascade do |t|
     t.string   "name",        limit: 30
@@ -32,24 +32,32 @@ ActiveRecord::Schema.define(version: 20150617192130) do
   add_index "associateds", ["user_id"], name: "index_associateds_on_user_id", using: :btree
 
   create_table "invoices", force: :cascade do |t|
-    t.integer  "kind_operation", limit: 4,                            default: 0
-    t.integer  "kind_payment",   limit: 4,                            default: 0
-    t.integer  "kind_invoice",   limit: 4,                            default: 0
-    t.string   "description",    limit: 150
-    t.decimal  "subtotal",                   precision: 10, scale: 2
-    t.decimal  "tax",                        precision: 10, scale: 2
-    t.decimal  "total",                      precision: 10, scale: 2
-    t.decimal  "balance",                    precision: 10, scale: 2
+    t.integer  "kind_operation",     limit: 4,                            default: 0
+    t.integer  "kind_payment",       limit: 4,                            default: 0
+    t.integer  "kind_invoice",       limit: 4,                            default: 0
+    t.string   "name_associated",    limit: 30
+    t.string   "ci_associated",      limit: 12
+    t.string   "address_associated", limit: 150
+    t.string   "name_product",       limit: 30,                                       null: false
+    t.string   "description",        limit: 150
+    t.integer  "quantity",           limit: 4,                                        null: false
+    t.decimal  "subtotal",                       precision: 10, scale: 2
+    t.decimal  "rate",                           precision: 5,  scale: 2,             null: false
+    t.decimal  "tax",                            precision: 10, scale: 2
+    t.decimal  "total",                          precision: 10, scale: 2
+    t.decimal  "balance",                        precision: 10, scale: 2
     t.date     "date"
-    t.string   "document",       limit: 150
-    t.string   "payment_proof",  limit: 150
-    t.integer  "associated_id",  limit: 4
-    t.integer  "user_id",        limit: 4
-    t.datetime "created_at",                                                      null: false
-    t.datetime "updated_at",                                                      null: false
+    t.string   "document",           limit: 150
+    t.string   "payment_proof",      limit: 150
+    t.integer  "associated_id",      limit: 4
+    t.integer  "user_id",            limit: 4
+    t.datetime "created_at",                                                          null: false
+    t.datetime "updated_at",                                                          null: false
+    t.integer  "product_id",         limit: 4
   end
 
   add_index "invoices", ["associated_id"], name: "index_invoices_on_associated_id", using: :btree
+  add_index "invoices", ["product_id"], name: "index_invoices_on_product_id", using: :btree
   add_index "invoices", ["user_id"], name: "index_invoices_on_user_id", using: :btree
 
   create_table "invoices_products", force: :cascade do |t|
@@ -64,8 +72,6 @@ ActiveRecord::Schema.define(version: 20150617192130) do
     t.string   "name",        limit: 30,                          null: false
     t.string   "description", limit: 150
     t.decimal  "price",                   precision: 8, scale: 2, null: false
-    t.date     "date"
-    t.integer  "quantity",    limit: 4
     t.integer  "user_id",     limit: 4
     t.integer  "invoice_id",  limit: 4
     t.datetime "created_at",                                      null: false
@@ -96,6 +102,7 @@ ActiveRecord::Schema.define(version: 20150617192130) do
 
   add_foreign_key "associateds", "users"
   add_foreign_key "invoices", "associateds"
+  add_foreign_key "invoices", "products"
   add_foreign_key "invoices", "users"
   add_foreign_key "invoices_products", "invoices"
   add_foreign_key "invoices_products", "products"

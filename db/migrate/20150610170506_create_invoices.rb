@@ -4,11 +4,17 @@ class CreateInvoices < ActiveRecord::Migration
       t.integer :kind_operation, default: 0
       t.integer :kind_payment, default: 0
       t.integer :kind_invoice, default: 0
-      t.string :description, limit: 150
+      t.string :name_associated, limit: 30
+      t.string :ci_associated, limit: 12
+      t.string :address_associated, limit: 150
+      t.string :name_product, null: false, limit: 30
+      t.string :description, limit: 150  
+      t.integer :quantity, limit: 4, null: false
       t.decimal :subtotal, precision: 10, scale: 2
+      t.decimal :rate, precision: 5, scale: 2, null: false
       t.decimal :tax, precision: 10, scale: 2
       t.decimal :total, precision: 10, scale: 2
-      t.decimal :balance, precision: 10, scale: 2
+      t.decimal :balance, precision: 10, scale: 2 
       t.date :date
       t.string :document, limit: 150
       t.string :payment_proof, limit: 150

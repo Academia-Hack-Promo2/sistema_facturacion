@@ -5,6 +5,5 @@ class Product < ActiveRecord::Base
   validates :name, :price, presence: true
   validates :name, length: { maximum: 30 }
   validates :description, length: { maximum: 150 }
-  validates :price, length: { maximum: 10 }
-  validates :quantity, numericality: { only_integer: true }
+  validates :price, length: { maximum: 10 }  
 end

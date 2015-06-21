@@ -11,11 +11,8 @@
             <%= semantic_form_for @product do |f| %>
             <%= f.input :name %>
             <%= f.input :description %>
-            <%= f.input :price %>
-            <%= f.input :date %>
-            <%= f.input :quantity %>
+            <%= f.input :price %>            
             <%= f.input :user_id %>
-            <%= f.input :invoice_id %>
             <%= f.submit :class => "btn btn-primary" %> 
             <%= link_to "Cancel", "/products", :class => 'btn btn-success' %> <% end %>         
           </div>

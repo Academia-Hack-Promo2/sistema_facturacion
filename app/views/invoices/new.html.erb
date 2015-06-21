@@ -12,16 +12,14 @@
             <%= f.input :kind_operation, :as => :select, :collection => Invoice.kind_operations.keys.to_a %>
           <%= f.input :kind_payment, :as => :select, :collection => Invoice.kind_payments.keys.to_a  %>
           <%= f.input :kind_invoice, :as => :select, :collection => Invoice.kind_invoices.keys.to_a  %>
-          <%= f.input :description %>
-          <%= f.input :subtotal %>
-          <%= f.input :tax %>
-          <%= f.input :total %>
-          <%= f.input :balance %>
           <%= f.input :date %>
           <%= f.input :document %>
+          <%= f.input :quantity %>
+          <%= f.input :rate %>
           <%= f.input :payment_proof %>
           <%= f.input :associated_id %>
           <%= f.input :user_id %>
+          <%= f.input :product_id %>
             <%= f.submit :class => "btn btn-primary" %> 
             <%= link_to "Cancel", "/invoices", :class => 'btn btn-success' %>
           

@@ -24,8 +24,8 @@
                     <th>N°</th>
                     <th>Payment</th>
                     <th>Invoice</th>
-                    <th>Description</th>
-                    <th>Total</th>                    
+                    <th>Product</th>   
+                    <th>Total</th>        
                     <th>Date</th>                    
                     <th>Associated</th>                    
                     <th>Details</th>
@@ -38,10 +38,10 @@
                       <td><%= index + 1 %></td>
                       <td><%= invoice.kind_payment %></td>
                       <td><%= invoice.kind_invoice %></td>
-                      <td><%= invoice.description %></td>
-                      <td><%= invoice.subtotal %></td>
+                      <td><%= invoice.name_product %></td>
+                      <td><%= invoice.total %></td>
                       <td><%= invoice.date %></td>
-                      <td><%= invoice.associated_id %></td>
+                      <td><%= invoice.name_associated %></td>
                       <td><%= link_to  "Details", invoice_path(invoice), :class => 'btn btn-info' %></td>
                       <td><%= link_to  "Edit", edit_invoice_path(invoice), :class => 'btn btn-primary' %></td>
                       <td><%= link_to 'Delete', invoice, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %></td>

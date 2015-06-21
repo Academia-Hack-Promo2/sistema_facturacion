@@ -27,7 +27,6 @@
                         <th>Alias</th>
                         <th>Email</th>
                         <th>Phone</th>
-                        <th>Description</th>
                         <th>Details</th>
                         <th>Update</th>
                         <th>Delete</th>
@@ -41,7 +40,6 @@
                           <td><%= associated.alias %></td>
                           <td><%= associated.email %></td>
                           <td><%= associated.phone %></td>
-                          <td><%= associated.description %></td>
                           <td><%= link_to  "Details", associated_path(associated), :class => 'btn btn-mini btn-info' %></td>
                           <td><%= link_to  "Edit", edit_associated_path(associated), :class => 'btn btn-mini btn-primary' %></td>
                           <td><%= link_to 'Destroy', associated, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger' %></td>

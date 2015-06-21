@@ -16,13 +16,16 @@ class InvoicesController < ApplicationController
   end
 
   def create
-    @invoice = Invoice.new(permit)
-    if @invoice.save
+    invoice = Invoice.new(permit)
+    product = Product.find(permit[:product_id])
+    associated = Associated.find(permit[:associated_id])
+    if Invoice.bill(product, invoice, associated)
+      invoice.save
       redirect_to invoices_path, :notice => 'Bill Successfully Added.'
     else
       render 'new'
     end
-  end 
+  end
 
   def edit
     @invoice = Invoice.find(params[:id])
@@ -56,7 +59,7 @@ class InvoicesController < ApplicationController
 
   def sales 
     @sales = Invoice.where(kind_operation: 0)
-  end
+  end  
 
   def sales_draft 
     @sales = Invoice.where(kind_operation: 0, kind_invoice: 0)
@@ -96,8 +99,11 @@ class InvoicesController < ApplicationController
 
   private
 
-	  def permit
-	  	params.require(:invoice).permit(:kind_operation, :kind_payment, :kind_invoice, :description, :subtotal, :tax, :total,
-	  								:balance, :date, :document, :payment_proof, :associated_id, :user_id)
-	  end	
+  def permit
+    params.require(:invoice).permit(:kind_operation, :kind_payment, 
+      :kind_invoice, :description, :name_product, :balance, :date, :quantity, 
+      :tax, :rate, :document, :payment_proof, :associated_id, :user_id, 
+      :product_id, :name_associated, :ci_associated, :address_associated)
+  end
+  
 end

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get 'sales/legal' => 'invoices#sales_legal'
     get 'sales/cash' => 'invoices#sales_cash'
     get 'sales/credit' => 'invoices#sales_credit'
+    post 'sales/sale' => 'invoices#sale'
 
     #Purchases
     get 'purchases' => 'invoices#purchases'

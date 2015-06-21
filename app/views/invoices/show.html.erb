@@ -6,7 +6,8 @@
           <div class="content">
           <div class="row">
           <% @invoice.each do |invoice| %>
-            <h1>Bill: <strong><%= invoice.associated_id %></strong></h1>
+            <h1>Bill: </h1>
+            <h3>Associated: <strong><%= invoice.name_associated %></strong></h3>
              <hr>  
             </div>
             <div class="table-responsive">
@@ -15,15 +16,17 @@
                   <th>Type</th>
                   <th>Payment</th>
                   <th>Invoice</th>
+                  <th>Product</th>
                   <th>Description</th>
-                  <th>Subtotal</th>
+                  <th>Amount</th>
                   <th>Tax</th>
-                  <th>Total</th>
-                  <th>Balance</th>
+                  <th>Total</th> 
                   <th>Date</th>
+                  <th>Associated</th>
+                  <th>ID</th>
+                  <th>Address</th>
                   <th>Document</th>
                   <th>Payment Proof</th>
-                  <th>Associated</th>
                   <th>User</th>
                 </thead>
                 <tbody>                        
@@ -31,15 +34,17 @@
                     <td><%= invoice.kind_operation %></td>
                     <td><%= invoice.kind_payment %></td>
                     <td><%= invoice.kind_invoice %></td>
+                    <td><%= invoice.name_product %></td>
                     <td><%= invoice.description %></td>
                     <td><%= invoice.subtotal %></td>
                     <td><%= invoice.tax %></td>
                     <td><%= invoice.total %></td>
-                    <td><%= invoice.balance %></td>
                     <td><%= invoice.date %></td>
+                    <td><%= invoice.name_associated %></td>
+                    <td><%= invoice.ci_associated %></td>
+                    <td><%= invoice.address_associated %></td>
                     <td><%= invoice.document %></td>
                     <td><%= invoice.payment_proof %></td>
-                    <td><%= invoice.associated_id %></td>
                     <td><%= invoice.user_id %></td>  
                   </tr>
                 </tbody>

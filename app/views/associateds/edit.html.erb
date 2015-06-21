@@ -20,7 +20,6 @@
             <%= f.input :frequency, :as => :select, :collection => Associated.frequencies.keys.to_a %>
             <%= f.input :status, :as => :select, :collection => Associated.statuses.keys.to_a %>
             <%= f.input :description %>
-            <%= f.input :user_id %>
             <%= f.submit :class => "btn btn-primary" %> 
             <%= link_to "Cancel", "/associateds", :class => 'btn btn-success' %>                   
             <% end %>          
