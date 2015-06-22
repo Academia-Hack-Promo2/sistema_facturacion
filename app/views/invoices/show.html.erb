@@ -5,9 +5,8 @@
         <div class="col-md-12">
           <div class="content">
           <div class="row">
-          <% @invoice.each do |invoice| %>
             <h1>Bill: </h1>
-            <h3>Associated: <strong><%= invoice.name_associated %></strong></h3>
+            <h3>Associated: <strong><%= @invoice.name_associated %></strong></h3>
              <hr>  
             </div>
             <div class="table-responsive">
@@ -31,28 +30,27 @@
                 </thead>
                 <tbody>                        
                   <tr>
-                    <td><%= invoice.kind_operation %></td>
-                    <td><%= invoice.kind_payment %></td>
-                    <td><%= invoice.kind_invoice %></td>
-                    <td><%= invoice.name_product %></td>
-                    <td><%= invoice.description %></td>
-                    <td><%= invoice.subtotal %></td>
-                    <td><%= invoice.tax %></td>
-                    <td><%= invoice.total %></td>
-                    <td><%= invoice.date %></td>
-                    <td><%= invoice.name_associated %></td>
-                    <td><%= invoice.ci_associated %></td>
-                    <td><%= invoice.address_associated %></td>
-                    <td><%= invoice.document %></td>
-                    <td><%= invoice.payment_proof %></td>
-                    <td><%= invoice.user_id %></td>  
+                    <td><%= @invoice.kind_operation %></td>
+                    <td><%= @invoice.kind_payment %></td>
+                    <td><%= @invoice.kind_invoice %></td>
+                    <td><%= @invoice.name_product %></td>
+                    <td><%= @invoice.description %></td>
+                    <td><%= @invoice.subtotal %></td>
+                    <td><%= @invoice.tax %></td>
+                    <td><%= @invoice.total %></td>
+                    <td><%= @invoice.date %></td>
+                    <td><%= @invoice.name_associated %></td>
+                    <td><%= @invoice.ci_associated %></td>
+                    <td><%= @invoice.address_associated %></td>
+                    <td><%= @invoice.document %></td>
+                    <td><%= @invoice.payment_proof %></td>
+                    <td><%= @invoice.user_id %></td>  
                   </tr>
                 </tbody>
               </table>
             </div>  
-            <%= link_to "Return", "/invoices", :class => 'btn btn-mini btn-success' %>    <%= link_to  "Edit", edit_invoice_path(invoice), :class => 'btn btn-primary' %>
-            <%= link_to 'Delete', invoice, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>                  
-                  <% end %>        
+            <%= link_to "Return", "/invoices", :class => 'btn btn-mini btn-success' %>    <%= link_to  "Edit", edit_invoice_path(@invoice), :class => 'btn btn-primary' %>
+            <%= link_to 'Delete', @invoice, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>       
           </div>
       </div>
     </div>

@@ -20,7 +20,7 @@ class Invoice < ActiveRecord::Base
   validates :kind_invoice, inclusion: { in: :kind_invoice }
   enum kind_payment: [ :Cash, :Credit ]
   enum kind_operation: [ :Sale, :Purchase ]
-  enum kind_invoice: [ :Draft, :Legal ]
+  enum kind_invoice: [ :Draft, :Invoice ]
 
   def self.bill product, invoice, associated 
       quantity = invoice[:quantity].to_i

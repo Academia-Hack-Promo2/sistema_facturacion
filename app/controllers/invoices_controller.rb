@@ -6,9 +6,7 @@ class InvoicesController < ApplicationController
   end
 
   def show
-    @invoice = []
-      invoice = Invoice.find(params[:id])
-      @invoice.push(invoice)
+    @invoice = Invoice.find(params[:id])
   end
 
   def new
@@ -40,7 +38,7 @@ class InvoicesController < ApplicationController
         render 'edit'
       end
     else
-      redirect_to invoices_path, :alert => 'The Legal Bill Should Not Be Changed.'
+      redirect_to invoices_path, :alert => 'The Invoice Should Not Be Changed.'
     end
   end 
 
@@ -53,7 +51,7 @@ class InvoicesController < ApplicationController
         render 'destroy'
       end
     else
-      redirect_to invoices_path, :alert => 'The Legal Bill Should Not Be Deleted.'
+      redirect_to invoices_path, :alert => 'The Invoice Should Not Be Deleted.'
     end
   end  
 
