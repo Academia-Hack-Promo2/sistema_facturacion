@@ -36,8 +36,6 @@ class Invoice < ActiveRecord::Base
       invoice[:subtotal] = subtotal
       invoice[:tax] = tax
       invoice[:total] = total
-      #invoice[:balance] += total
-      product.save      
-    # end
+      #invoice[:balance] += total      
   end
 end
