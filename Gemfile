@@ -37,6 +37,8 @@ gem 'formtastic', '~> 3.0'
 
 gem 'formtastic-bootstrap'
 
+gem 'bootstrap-modal-rails'
+
 gem "therubyracer"
 
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
