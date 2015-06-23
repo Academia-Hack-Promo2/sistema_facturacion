@@ -9,11 +9,35 @@ class InvoicePdf < Prawn::Document
  
   def header
     #This inserts an image in the pdf file and sets the size of the image
-    image "#{Rails.root}/app/assets/images/full-logo-aeb6cec9ca9eee43393c56f9d220e49c.png", :alt => "logo", :title => "logo"
-    move_down 50
-    text "#{@invoice[0].kind_invoice} ##{@invoice[0].id}", :size => 30, :style => :bold
+    # cell_1 = make_cell(:content => "#{@invoice[0].kind_invoice} ##{@invoice[0].id}")
+    # cell_2 = make_cell(:content => "")
+    
+    y_position = cursor - 0
+    image "#{Rails.root}/app/assets/images/full-logo-aeb6cec9ca9eee43393c56f9d220e49c.png", :scale => 0.75
+    bounding_box([150, y_position], :width => 400, :height => 100) do
+      text "Hack", size: 18, style: :bold
+      text "RIF J-123456789-0", size: 14, style: :bold
+      text "Venezuela, Caracas, Los Dos Caminos, Av. Sucre entre 4ta y 5ta transversal, Centro Boyacá, Piso 19. Cel: (0416) 6975620, Email: rramos@4geeks.co"
+    end
 
+
+    text "#{@invoice[0].kind_invoice} ##{@invoice[0].id}", :color =>  rgb='f22415', :size => 30, :style => :bold
+
+     y_position = cursor - 20
+ 
+    # The bounding_box takes the x and y coordinates for positioning its content and some options to style it
+    bounding_box([0, y_position], :width => 400, :height => 200) do
+      text "Personal Details", size: 16, style: :bold
+      text "Name:", size: 14, style: :bold
+      text "#{@invoice[0].name_associated}"
+      text "ID:", size: 14, style: :bold
+      text "#{@invoice[0].ci_associated}"
+      text "Address:", size: 14, style: :bold
+      text "#{@invoice[0].address_associated}"    
+
+    end
   
+    move_down 5
   end
  
   def text_content
