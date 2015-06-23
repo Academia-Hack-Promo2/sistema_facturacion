@@ -5,8 +5,8 @@
         <div class="col-md-12">
           <div class="content">
           <div class="row">
-          <% @invoice.each do |invoice| %>
             <h1>Bill: </h1>
+            <% @invoice.each do |invoice| %>
             <h3>Associated: <strong><%= invoice.name_associated %></strong></h3>
              <hr>  
             </div>
@@ -50,9 +50,10 @@
                 </tbody>
               </table>
             </div>  
-            <%= link_to "Return", "/invoices", :class => 'btn btn-mini btn-success' %>    <%= link_to  "Edit", edit_invoice_path(invoice), :class => 'btn btn-primary' %>
-            <%= link_to 'Delete', invoice, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>                  
-                  <% end %>        
+            <%= link_to " ", "/invoices", :class => 'btn btn-mini btn-success glyphicon glyphicon-chevron-left' %>    <%= link_to  " ", edit_invoice_path(@invoice), :class => 'btn btn-success glyphicon glyphicon-pencil' %>
+            <%= link_to " ", invoice_path(@invoice, :format => 'pdf'), :class => "btn btn-mini btn-success glyphicon glyphicon-floppy-save" %>
+            <%= link_to ' ', @invoice, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger glyphicon glyphicon-trash' %>    
+            <% end %>
           </div>
       </div>
     </div>

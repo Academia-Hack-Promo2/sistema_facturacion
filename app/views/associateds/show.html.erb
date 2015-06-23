@@ -1,51 +1,81 @@
-
 <div id="page-content-wrapper">
   <div class="page-content inset">
     <div class="row">
-        <div class="col-md-12">
-          <div class="content">                
-            <div class="row">
-          <% @associated.each do |associated| %>
-            <h1><%= associated.kind %> : <strong><%= associated.name %></strong></h1>
-            <hr>                    
-            </div>
-            <div class="table-responsive">
-              <table class="table table-hover">
-                <thead>
-                  <th>Name</th>
-                  <th>CI-RIF</th>
-                  <th>Alias</th>
-                  <th>Email</th>
-                  <th>Phone</th>
-                  <th>Address</th>
-                  <th>Type</th>
-                  <th>Frequency</th>
-                  <th>Description</th>
-                  <th>Status</th>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><%= associated.name %></td>
-                    <td><%= associated.ci_rif %></td>
-                    <td><%= associated.alias %></td>
-                    <td><%= associated.email %></td>
-                    <td><%= associated.phone %></td>
-                    <td><%= associated.address %></td>
-                    <td><%= associated.kind %></td>
-                    <td><%= associated.frequency %></td>
-                    <td><%= associated.description %></td>
-                    <td><%= associated.status %></td> 
-                  </tr>
-                </tbody>
-              </table>
-            </div> 
-             <%= link_to "Return", "/associateds", :class => 'btn btn-mini btn-success' %> 
-             <%= link_to  "Edit", edit_associated_path(associated), :class => 'btn btn-mini btn-primary' %>  
-             <%= link_to 'Delete', associated, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger' %>                
-                  <% end %>                          
+      <div class="col-md-12">
+        <div class="content">
+          <div class="row">
+            
+            <h1><%= @associated.kind %> : <strong><%= @associated.name %></strong></h1>
+            <hr>
           </div>
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <th>Name</th>
+                <th>CI-RIF</th>
+                <th>Alias</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Type</th>
+                <th>Frequency</th>
+                <th>Description</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><%= @associated.name %></td>
+                  <td><%= @associated.ci_rif %></td>
+                  <td><%= @associated.alias %></td>
+                  <td><%= @associated.email %></td>
+                  <td><%= @associated.phone %></td>
+                  <td><%= @associated.address %></td>
+                  <td><%= @associated.kind %></td>
+                  <td><%= @associated.frequency %></td>
+                  <td><%= @associated.description %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <% @associated.invoices.each_with_index do |invoice, index| %>
+          <h4><strong><%= @associated.name %>'s Bills</strong></h4>
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <th>N°</th>
+                <th>Bill N°</th>
+                <th>Type</th>
+                <th>Payment</th>
+                <th>Invoice</th>
+                <th>Product</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Tax</th>
+                <th>Total</th>
+                <th>Date</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><%= index + 1 %></td>
+                  <td><%= invoice.id %></td>
+                  <td><%= invoice.kind_operation %></td>
+                  <td><%= invoice.kind_payment %></td>
+                  <td><%= invoice.kind_invoice %></td>
+                  <td><%= invoice.name_product %></td>
+                  <td><%= invoice.description %></td>
+                  <td><%= invoice.subtotal %></td>
+                  <td><%= invoice.tax %></td>
+                  <td><%= invoice.total %></td>
+                  <td><%= invoice.date %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <% end %>
+          <%= link_to "Return", "/associateds", :class => 'btn btn-mini btn-success' %>
+          <%= link_to  "Edit", edit_associated_path(@associated), :class => 'btn btn-mini btn-primary' %>
+          <%= link_to 'Delete', @associated, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger' %>          
+        </div>
       </div>
     </div>
   </div>
-</div>      
-
+</div>

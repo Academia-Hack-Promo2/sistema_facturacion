@@ -1,14 +1,29 @@
 class InvoicesController < ApplicationController
   before_filter :authenticate_user!
+   prawnto :prawn => { :page_size => 'A4', :margin => 20 }
 
   def index
-    @invoices = Invoice.all
+    @invoices = Invoice.all 
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = ReportPdf.new(@invoices)
+        send_data pdf.render, filename: 'report.pdf', type: 'application/pdf'
+      end
+    end 
   end
 
   def show
     @invoice = []
-      invoice = Invoice.find(params[:id])
-      @invoice.push(invoice)
+    invoice = Invoice.find(params[:id]) 
+    @invoice.push(invoice)  
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = InvoicePdf.new(@invoice)
+        send_data pdf.render, filename: 'invoice.pdf', type: 'application/pdf'
+      end
+    end 
   end
 
   def new
@@ -40,7 +55,7 @@ class InvoicesController < ApplicationController
         render 'edit'
       end
     else
-      redirect_to invoices_path, :alert => 'The Legal Bill Should Not Be Changed.'
+      redirect_to invoices_path, :alert => 'The Invoice Should Not Be Changed.'
     end
   end 
 
@@ -53,7 +68,7 @@ class InvoicesController < ApplicationController
         render 'destroy'
       end
     else
-      redirect_to invoices_path, :alert => 'The Legal Bill Should Not Be Deleted.'
+      redirect_to invoices_path, :alert => 'The Invoice Should Not Be Deleted.'
     end
   end  
 

@@ -6,9 +6,7 @@ class AssociatedsController < ApplicationController
   end
 
   def show
-    @associated = []
-      associated = Associated.find(params[:id])
-      @associated.push(associated)
+      @associated = Associated.includes(:invoices).find(params[:id])
   end
 
   def new

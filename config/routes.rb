@@ -22,7 +22,9 @@ Rails.application.routes.draw do
     get 'purchases/cash' => 'invoices#purchases_cash'
     get 'purchases/credit' => 'invoices#purchases_credit'    
     
-  resources :associateds   
+  resources :associateds do
+    resources :invoices
+  end
     #Customers 
     get 'customers' => 'associateds#customers'
     get 'customers/recurrent' => 'associateds#customers_recurrent'
