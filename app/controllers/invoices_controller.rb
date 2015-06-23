@@ -1,12 +1,29 @@
 class InvoicesController < ApplicationController
   before_filter :authenticate_user!
+   prawnto :prawn => { :page_size => 'A4', :margin => 20 }
 
   def index
-    @invoices = Invoice.all
+    @invoices = Invoice.all 
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = ReportPdf.new(@invoices)
+        send_data pdf.render, filename: 'report.pdf', type: 'application/pdf'
+      end
+    end 
   end
 
   def show
-    @invoice = Invoice.find(params[:id])
+    @invoice = []
+    invoice = Invoice.find(params[:id]) 
+    @invoice.push(invoice)  
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = InvoicePdf.new(@invoice)
+        send_data pdf.render, filename: 'invoice.pdf', type: 'application/pdf'
+      end
+    end 
   end
 
   def new
