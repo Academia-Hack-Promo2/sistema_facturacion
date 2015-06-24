@@ -9,12 +9,7 @@
                   
              <hr>                    
             </div>
-            <ul class="nav nav-tabs">
-              <li role="presentation" class="active"><%= link_to "Bills", Invoice %></li>
-              <li role="presentation"><%= link_to "Sales", "/sales" %></li>
-              <li role="presentation"><%= link_to "Purchases", "/purchases" %></li>
-               <%= link_to "New Bill", new_invoice_path, :class => 'btn btn-mini btn-success' %>
-            </ul>
+            <%= render 'layouts/invoices' %>
             <br><br>
               <div class="table-responsive">
                 <table class="table table-hover">
@@ -42,7 +37,7 @@
                       <td><%= invoice.total %></td>
                       <td><%= invoice.date %></td>
                       <td><%= invoice.name_associated %></td>
-                      <td><%= link_to  "Details", invoice_path(invoice), :class => 'btn btn-info' %></td>
+                      <td><%= link_to  "Details", invoice_path(invoice), :class => 'btn btn-default' %></td>
                       <td><%= link_to  "Edit", edit_invoice_path(invoice), :class => 'btn btn-primary' %></td>
                       <td><%= link_to 'Delete', invoice, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %></td>
                     </tr>

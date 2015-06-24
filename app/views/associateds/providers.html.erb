@@ -8,15 +8,7 @@
             <h1>Providers</h1>  
             <hr>                    
             </div> 
-                <ul class="nav nav-tabs">
-                  <li role="presentation" ><%= link_to "Stakeholders", Associated %></li>
-                    <li role="presentation" class="active"><%= link_to "Providers", customers_path %></li>
-                    <li role="presentation"><%= link_to "Actives", providers_active_path %></li>
-                    <li role="presentation"><%= link_to "Inactives", providers_inactive_path %></li>
-                    <li role="presentation"><%= link_to "Punctuals", providers_punctual_path %></li>
-                    <li role="presentation"><%= link_to "Recurrents", providers_recurrent_path %></li>
-                  <%= link_to "New Associated", new_associated_path, :class => 'btn btn-mini btn-success' %>
-                </ul>
+                 <%= render 'layouts/stakeholders' %>
             <br><br>
             <div class="table-responsive">
               <table class="table table-hover">
@@ -38,7 +30,7 @@
                     <td><%= associated.ci_rif %></td>
                     <td><%= associated.email %></td>
                     <td><%= associated.phone %></td>
-                    <td><%= link_to  "Details", associated_path(associated), :class => 'btn btn-mini btn-info' %></td>
+                    <td><%= link_to  "Details", associated_path(associated), :class => 'btn btn-mini btn-default' %></td>
                     <td><%= link_to  "Edit", edit_associated_path(associated), :class => 'btn btn-mini btn-primary' %></td>
                     <td><%= link_to 'Destroy', associated, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger' %></td>
                   </tr>

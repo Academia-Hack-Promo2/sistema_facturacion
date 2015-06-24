@@ -36,6 +36,11 @@ hr {
   margin-top: 50px;
 }
 
+.navbar {
+  background-color: white;
+  border: 0;
+}
+
 #sidebar_menu{
 	text-align: center;
 	margin-top: 50px;

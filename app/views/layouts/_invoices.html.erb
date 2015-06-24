@@ -1,0 +1,26 @@
+<ul class="nav nav-tabs">
+  <li role="presentation"><%= link_to "Bills", Invoice %></li>
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sales <span class="caret"></span></a>
+    <ul class="dropdown-menu" role="menu">
+      <li role="presentation"><%= link_to "Sales", sales_path %></li>
+      <li class="divider"></li>      
+      <li role="presentation"><%= link_to "Draft", sales_draft_path %></li>
+      <li role="presentation"><%= link_to "Legal", sales_legal_path %></li>
+      <li role="presentation"><%= link_to "Cash", sales_cash_path %></li>
+      <li role="presentation"><%= link_to "Credit", sales_credit_path %></li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Purchases <span class="caret"></span></a>
+    <ul class="dropdown-menu" role="menu">
+      <li role="presentation"><%= link_to "Purchases", purchases_path %></li>
+      <li class="divider"></li>      
+      <li role="presentation"><%= link_to "Draft", purchases_draft_path %></li>
+      <li role="presentation"><%= link_to "Legal", purchases_legal_path %></li>
+      <li role="presentation"><%= link_to "Cash", purchases_cash_path %></li>
+      <li role="presentation"><%= link_to "Credit", purchases_credit_path %></li>
+    </ul>
+  </li>  
+  <li><%= link_to "New Bill", new_invoice_path, :class => 'btn btn-mini btn-info' %></li>
+</ul>

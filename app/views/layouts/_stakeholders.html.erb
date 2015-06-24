@@ -1,0 +1,37 @@
+<ul class="nav nav-tabs">
+  <li role="presentation"><%= link_to "Stakeholders", Associated %></li>
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Customers <span class="caret"></span></a>
+    <ul class="dropdown-menu" role="menu">
+      <li role="presentation"><%= link_to "Customers", customers_path %></li>
+      <li class="divider"></li>
+      <li role="presentation"><%= link_to "Actives", customers_active_path %></li>
+      <li role="presentation"><%= link_to "Inactives", customers_inactive_path %></li>
+      <li role="presentation"><%= link_to "Punctuals", customers_punctual_path %></li>
+      <li role="presentation"><%= link_to "Recurrents", customers_recurrent_path %></li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sponsors <span class="caret"></span></a>
+    <ul class="dropdown-menu" role="menu">
+      <li role="presentation"><%= link_to "Sponsors", sponsors_path %></li>
+      <li class="divider"></li>
+      <li role="presentation"><%= link_to "Actives", sponsors_active_path %></li>
+      <li role="presentation"><%= link_to "Inactives", sponsors_inactive_path %></li>
+      <li role="presentation"><%= link_to "Punctuals", sponsors_punctual_path %></li>
+      <li role="presentation"><%= link_to "Recurrents", sponsors_recurrent_path %></li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Providers <span class="caret"></span></a>
+    <ul class="dropdown-menu" role="menu">
+      <li role="presentation"><%= link_to "Providers", providers_path %></li>
+      <li class="divider"></li>
+      <li role="presentation"><%= link_to "Actives", sponsors_active_path %></li>
+      <li role="presentation"><%= link_to "Inactives", sponsors_inactive_path %></li>
+      <li role="presentation"><%= link_to "Punctuals", sponsors_punctual_path %></li>
+      <li role="presentation"><%= link_to "Recurrents", sponsors_recurrent_path %></li>
+    </ul>
+  </li>
+  <li><%= link_to "New Associated", new_associated_path, :class => 'btn btn-mini btn-info' %></li>
+</ul>

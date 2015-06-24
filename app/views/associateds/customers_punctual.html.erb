@@ -5,18 +5,10 @@
               <div class="col-md-12">
                 <div class="content">
                 <div class="row">
-                  <h1>Customers</h1>  
+                  <h1>Customers: <strong>Punctuals</strong></h1>  
                   <hr>                    
                   </div>
-                  <ul class="nav nav-tabs">
-                    <li role="presentation" ><%= link_to "Stakeholders", Associated %></li>
-                    <li role="presentation"><%= link_to "Customers", customers_path %></li>
-                    <li role="presentation"><%= link_to "Actives", customers_active_path %></li>
-                    <li role="presentation"><%= link_to "Inactives", customers_inactive_path %></li>
-                    <li role="presentation" class="active"><%= link_to "Punctuals", customers_punctual_path %></li>
-                    <li role="presentation"><%= link_to "Recurrents", customers_recurrent_path %></li>                    
-                    <%= link_to "New Associated", new_associated_path, :class => 'btn btn-mini btn-success' %>
-                  </ul>
+                   <%= render 'layouts/stakeholders' %>
                   <br><br>
                   <div class="table-responsive">
                     <table class="table table-hover">
@@ -38,7 +30,7 @@
                           <td><%= associated.ci_rif %></td>
                           <td><%= associated.email %></td>
                           <td><%= associated.phone %></td>
-                          <td><%= link_to  "Details", associated_path(associated), :class => 'btn btn-mini btn-info' %></td>
+                          <td><%= link_to  "Details", associated_path(associated), :class => 'btn btn-mini btn-default' %></td>
                           <td><%= link_to  "Edit", edit_associated_path(associated), :class => 'btn btn-mini btn-primary' %></td>
                           <td><%= link_to 'Destroy', associated, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger' %></td>
                         </tr>
