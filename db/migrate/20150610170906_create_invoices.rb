@@ -11,7 +11,7 @@ class CreateInvoices < ActiveRecord::Migration
       t.string :description, limit: 150  
       t.integer :quantity, limit: 4, null: false
       t.decimal :subtotal, precision: 10, scale: 2
-      t.decimal :rate, precision: 5, scale: 2, null: false
+      t.decimal :rate, precision: 5, scale: 2, default: 12
       t.decimal :tax, precision: 10, scale: 2
       t.decimal :total, precision: 10, scale: 2
       t.decimal :balance, precision: 10, scale: 2 
@@ -20,6 +20,7 @@ class CreateInvoices < ActiveRecord::Migration
       t.string :payment_proof, limit: 150
       t.references :associated, index: true, foreign_key: true
       t.references :user, index: true, foreign_key: true
+      t.references :product, index: true, foreign_key: true
 
       t.timestamps null: false
     end

@@ -4,13 +4,6 @@ class InvoicesController < ApplicationController
 
   def index
     @invoices = Invoice.all 
-    respond_to do |format|
-      format.html
-      format.pdf do
-        pdf = ReportPdf.new(@invoices)
-        send_data pdf.render, filename: 'report.pdf', type: 'application/pdf'
-      end
-    end 
   end
 
   def show
@@ -47,15 +40,20 @@ class InvoicesController < ApplicationController
   end
 
   def update
-    @invoice = Invoice.find(params[:id])
-    if @invoice.kind_invoice == 'Draft'
-      if @invoice.update(permit)
-        redirect_to invoices_path, :notice => 'Draft Bill Successfully Updated.'
+    invoice = Invoice.find(params[:id])
+    product = Product.find(permit[:product_id])
+    associated = Associated.find(permit[:associated_id])
+    if Invoice.change(product, invoice, associated)
+      invoice.update(permit)
+      if invoice.subtotal != product.price*invoice.quantity
+        Invoice.change(product, invoice, associated)
       else
-        render 'edit'
+        invoice.update(permit)
       end
+      invoice.update(permit)
+      redirect_to invoices_path, :notice => 'Bill Successfully Added.'
     else
-      redirect_to invoices_path, :alert => 'The Invoice Should Not Be Changed.'
+      render 'new'
     end
   end 
 

@@ -13,7 +13,6 @@
               <thead>
                 <th>Name</th>
                 <th>CI-RIF</th>
-                <th>Alias</th>
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Address</th>
@@ -25,7 +24,6 @@
                 <tr>
                   <td><%= @associated.name %></td>
                   <td><%= @associated.ci_rif %></td>
-                  <td><%= @associated.alias %></td>
                   <td><%= @associated.email %></td>
                   <td><%= @associated.phone %></td>
                   <td><%= @associated.address %></td>
@@ -37,18 +35,17 @@
             </table>
           </div>
           <% @associated.invoices.each_with_index do |invoice, index| %>
-          <h4><strong><%= @associated.name %>'s Bills</strong></h4>
+          <h4><strong><%= invoice.kind_invoice %> # <%= invoice.id %></strong></h4>
           <div class="table-responsive">
             <table class="table table-hover">
               <thead>
                 <th>N°</th>
-                <th>Bill N°</th>
                 <th>Type</th>
                 <th>Payment</th>
                 <th>Invoice</th>
                 <th>Product</th>
                 <th>Description</th>
-                <th>Amount</th>
+                <th>Price</th>
                 <th>Tax</th>
                 <th>Total</th>
                 <th>Date</th>
@@ -56,7 +53,6 @@
               <tbody>
                 <tr>
                   <td><%= index + 1 %></td>
-                  <td><%= invoice.id %></td>
                   <td><%= invoice.kind_operation %></td>
                   <td><%= invoice.kind_payment %></td>
                   <td><%= invoice.kind_invoice %></td>

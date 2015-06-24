@@ -28,7 +28,7 @@
                       <td><%= product.price %></td>
                       <td><%= link_to  "Details", product_path(product), :class => 'btn btn-info' %></td>
                       <td><%= link_to  "Edit", edit_product_path(product), :class => 'btn btn-primary' %></td>
-                      <td><%= link_to "Delete", "#my-modal", :class => "btn btn-danger", "data-toggle" => "modal" %></td>
+                      <td><%= link_to "Delete", product, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger' %></td>
                     </tr>
                     <% end %>
                   </tbody>

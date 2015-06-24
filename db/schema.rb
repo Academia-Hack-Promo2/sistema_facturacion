@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150621035124) do
+ActiveRecord::Schema.define(version: 20150617192130) do
 
   create_table "associateds", force: :cascade do |t|
     t.string   "name",        limit: 30
@@ -38,11 +38,11 @@ ActiveRecord::Schema.define(version: 20150621035124) do
     t.string   "name_associated",    limit: 30
     t.string   "ci_associated",      limit: 12
     t.string   "address_associated", limit: 150
-    t.string   "name_product",       limit: 30,                                       null: false
+    t.string   "name_product",       limit: 30,                                          null: false
     t.string   "description",        limit: 150
-    t.integer  "quantity",           limit: 4,                                        null: false
+    t.integer  "quantity",           limit: 4,                                           null: false
     t.decimal  "subtotal",                       precision: 10, scale: 2
-    t.decimal  "rate",                           precision: 5,  scale: 2,             null: false
+    t.decimal  "rate",                           precision: 5,  scale: 2, default: 12.0
     t.decimal  "tax",                            precision: 10, scale: 2
     t.decimal  "total",                          precision: 10, scale: 2
     t.decimal  "balance",                        precision: 10, scale: 2
@@ -51,34 +51,24 @@ ActiveRecord::Schema.define(version: 20150621035124) do
     t.string   "payment_proof",      limit: 150
     t.integer  "associated_id",      limit: 4
     t.integer  "user_id",            limit: 4
-    t.datetime "created_at",                                                          null: false
-    t.datetime "updated_at",                                                          null: false
     t.integer  "product_id",         limit: 4
+    t.datetime "created_at",                                                             null: false
+    t.datetime "updated_at",                                                             null: false
   end
 
   add_index "invoices", ["associated_id"], name: "index_invoices_on_associated_id", using: :btree
   add_index "invoices", ["product_id"], name: "index_invoices_on_product_id", using: :btree
   add_index "invoices", ["user_id"], name: "index_invoices_on_user_id", using: :btree
 
-  create_table "invoices_products", force: :cascade do |t|
-    t.integer "invoice_id", limit: 4
-    t.integer "product_id", limit: 4
-  end
-
-  add_index "invoices_products", ["invoice_id"], name: "index_invoices_products_on_invoice_id", using: :btree
-  add_index "invoices_products", ["product_id"], name: "index_invoices_products_on_product_id", using: :btree
-
   create_table "products", force: :cascade do |t|
     t.string   "name",        limit: 30,                          null: false
     t.string   "description", limit: 150
     t.decimal  "price",                   precision: 8, scale: 2, null: false
     t.integer  "user_id",     limit: 4
-    t.integer  "invoice_id",  limit: 4
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
   end
 
-  add_index "products", ["invoice_id"], name: "index_products_on_invoice_id", using: :btree
   add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
@@ -104,8 +94,5 @@ ActiveRecord::Schema.define(version: 20150621035124) do
   add_foreign_key "invoices", "associateds"
   add_foreign_key "invoices", "products"
   add_foreign_key "invoices", "users"
-  add_foreign_key "invoices_products", "invoices"
-  add_foreign_key "invoices_products", "products"
-  add_foreign_key "products", "invoices"
   add_foreign_key "products", "users"
 end
