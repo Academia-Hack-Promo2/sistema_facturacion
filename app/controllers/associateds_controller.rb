@@ -2,11 +2,11 @@ class AssociatedsController < ApplicationController
 	before_filter :authenticate_user!
 
   def index
-  	@associateds = Associated.all
+  	@associateds = Associated.order('created_at DESC').page(params[:page]).per(10)
   end
 
   def show
-      @associated = Associated.includes(:invoices).find(params[:id])
+    @associated = Associated.includes(:invoices).find(params[:id])
   end
 
   def new
